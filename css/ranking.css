@@ -66,13 +66,13 @@
 .top2.top2 {
   position: absolute;
   top: 0.26rem;
-  left: 0.7rem;
+  left: 0.41rem;
   width: 1.8rem;
 }
 .top3.top3 {
   position: absolute;
   top: 0.26rem;
-  right: 0.7rem;
+  right: 0.41rem;
   width: 1.8rem;
 }
 .card.card {
@@ -82,7 +82,7 @@
   padding: 0.41rem 0.387rem;
   color: #aaa;
 }
-.card > img {
+.card >div img {
   width: 2.03rem;
   margin-right: 0.2rem;
   border-radius: 3px;

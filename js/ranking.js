@@ -62,7 +62,7 @@ function crTwo(res) {
   a.href = `./book_details.html?id=${res[idxs]._id}`;
   a.innerHTML = `
   <div class="card">
-  <img src="${res[idxs].pic}" alt="" />
+  <div><img src="${res[idxs].pic}" alt="" /></div>
   <div>
     <p>${res[idxs].title}</p>
     <span>更新至 ${res[idxs].totalSection}话</span>
