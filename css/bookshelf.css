@@ -32,7 +32,7 @@
 }
 .book_nav > span {
   display: inline-block;
-  width: 3.1rem;
+  width: 6.3rem;
   line-height: 0.74rem;
   margin: 0.08rem 0rem 0.08rem 0.08rem;
   background-color: white;
@@ -41,7 +41,7 @@
 .book_nav > span:nth-of-type(2) {
   margin: 0.08rem 0.08rem 0.08rem 0rem;
 }
-.books {
+.book {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -61,7 +61,7 @@
   font-weight: 900;
   color: black;
 }
-.del {
+/* .del {
   display: none;
   width: 100%;
   min-height: 100vh;
@@ -120,4 +120,4 @@
   right: -0.15rem;
   border-color: white;
   background-color: rgba(255, 255, 255, 0);
-}
+} */

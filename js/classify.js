@@ -1,9 +1,15 @@
 var tag = "";
-var idxs=0;
 var nav = document.querySelector(".nav");
 var formm = document.querySelector(".form");
 var content = document.querySelector(".content");
-var cladata = {};
+var cladata = { page: 1, pageSize: 10 };
+var loading=`<div class="loading">
+              <div class="kuai kuai_one"></div>
+              <div class="kuai kuai_two"></div>
+              <div class="kuai kuai_three"></div>
+              <div class="kuai kuai_four"></div>
+              </div>`
+ajj(cladata);
 
 //获取分类标签
 ajax("/api/tag", {}, "get").then((res) => {
@@ -15,13 +21,13 @@ ajax("/api/tag", {}, "get").then((res) => {
 
 //添加标签点击事件
 nav.onclick = function (e) {
+  cladata.page = 1;
   if (e.target.tagName != "SPAN") return;
   var spArr = e.path[1].children;
   for (let i = 0; i < spArr.length; i++) {
     spArr[i].classList.remove("clo");
   }
-  idxs=0;
-  content.innerHTML='';
+  content.innerHTML = loading;
   e.target.classList.add("clo");
   pabd(e.target.innerText);
   ajj(cladata);
@@ -30,11 +36,14 @@ nav.onclick = function (e) {
 //获取漫画
 function ajj(cladata) {
   ajax("/api/book", cladata, "get").then((res) => {
-    console.log(res.data=='');
-    if(res.data==''){content.innerHTML='<p>这个分类空空如也，看看其他的吧！</p>'}
+    if (cladata.page == 1) {
+      content.innerHTML = '';
+      if (res.data == "") {
+        content.innerHTML = "<p>这个分类空空如也，看看其他的吧！</p>";
+      }
+    }
     for (let i = 0; i < res.data.length; i++) {
-      crThree(res.data);
-      idxs++;
+      crThree(res.data, i);
     }
   });
 }
@@ -67,27 +76,36 @@ function pabd(text) {
   }
 }
 
-function crThree(res) {
+function crThree(res, idx) {
   let span = "";
-  for (let i = 0; i < res[idxs].tag.length; i++) {
-    span += `<span> ${res[idxs].tag[i]} </span>`;
+
+  for (let i = 0; i < res[idx].tag.length; i++) {
+    span += `<span> ${res[idx].tag[i]} </span>`;
   }
   let a = document.createElement("a");
-  a.href = `${config}/api/book/one?id=${res[idxs]._id}`;
+  a.href = `${config}/api/book/one?id=${res[idx]._id}`;
   a.innerHTML = `
     <div class="card">
-    <img src="${res[idxs].pic}" alt="" />
+    <img src="${res[idx].pic}" alt="" />
     <div>
-      <p>${res[idxs].title}</p>
-      <span>更新至 ${res[idxs].totalSection}话</span>
+      <p>${res[idx].title}</p>
+      <span>更新至 ${res[idx].totalSection}话</span>
       <div class="clin">
         ${span}
       </div>
       <p class="intr">
-        ${res[idxs].desc}
+        ${res[idx].desc}
       </p>
     </div>
   </div>
   `;
   content.appendChild(a);
 }
+
+window.onscroll = function (e) {
+  if (scrollTop() + clientHeight() == scrollHeight()) {
+    cladata.page += 1;
+    console.log(cladata.page);
+    ajj(cladata);
+  }
+};
