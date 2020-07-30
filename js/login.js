@@ -31,3 +31,16 @@ ajax('/api/user',{},'get')
 .then(res=>{
     console.log(res);
 });
+
+//内容总高度
+function scrollHeight() {
+    return document.documentElement.scrollHeight || document.body.scrollHeight;
+  }
+  //视窗高度
+  function clientHeight() {
+    return document.documentElement.clientHeight || document.body.clientHeight;
+  }
+  //滚动区域的高度
+  function scrollTop() {
+    return document.documentElement.scrollTop || document.body.scrollTop;
+  }
