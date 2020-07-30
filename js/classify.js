@@ -83,7 +83,7 @@ function crThree(res, idx) {
     span += `<span> ${res[idx].tag[i]} </span>`;
   }
   let a = document.createElement("a");
-  a.href = `${config}/api/book/one?id=${res[idx]._id}`;
+  a.href = `./book_details.html?id=${res[idx]._id}`;
   a.innerHTML = `
     <div class="card">
     <img src="${res[idx].pic}" alt="" />

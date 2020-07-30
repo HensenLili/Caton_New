@@ -8,6 +8,7 @@
   height: 0.85rem;
   font-size: 0.365rem;
   background-color: white;
+  border-bottom: .2rem solid #f5f5f5;
 }
 .nav > a > span {
   display: block;
@@ -19,7 +20,7 @@
 }
 .book {
   font-size: 0.365rem;
-  margin: 2.3rem 0.388rem 0.388rem 0.188rem;
+  padding: 2.3rem 0.388rem 0.388rem 0.388rem;
 }
 .book_nav {
   font-size: 0.365rem;

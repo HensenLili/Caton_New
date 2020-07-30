@@ -17,7 +17,7 @@
 		</div>
 		<div class="nav">
 			<ul class="nav-list">
-				<li>书架</li>
+				<li class="shujia">书架</li>
 				<li class="jian">推荐</li>
 				<li class="nan">男生</li>
 				<li class="recommend">女生</li>
@@ -308,11 +308,16 @@
 		
 		var jian = document.querySelector('.jian')
 		var nan = document.querySelector('.nan')
+		var shujia = document.querySelector('.shujia')
 		jian.onclick = function(){
 				window.location.href = "tuijian.html";
 		}
 		nan.onclick = function(){
 				window.location.href = "boy.html";
+		}
+		shujia.onclick =function(){
+			window.location.href = "bookshelf.html";
+
 		}
 	</script>
 </html>

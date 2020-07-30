@@ -16,6 +16,7 @@ var gufen = document.querySelectorAll(".gufen")
 // console.log(gufen)
 var man = document.querySelector('.man')
 var nv = document.querySelector('.nv')
+var shujia =document.querySelector('.shujia')
 
 
 //接点

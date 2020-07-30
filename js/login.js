@@ -1,4 +1,7 @@
-const config='http://47.106.96.222:2333'
+const config='http://47.106.96.222:2333';
+document.querySelector('.back').onclick=function(){
+    window.history.go(-1)
+}
 
 function ajax(Url,data,type){
     let ran=new Promise(function(resolve,reject){
