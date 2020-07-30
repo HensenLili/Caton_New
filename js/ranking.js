@@ -40,7 +40,7 @@ function rank(data) {
 //载入页面
 function crOne(res) {
   let a = document.createElement("a");
-  a.href = `${config}/api/book/one?id=${res[idxs]._id}`;
+  a.href = `./book_details.html?id=${res[idxs]._id}`;
   a.innerHTML = `
     <div class="top${idx + 1}">
     <img src="./img/top${idx + 1}.png" alt="" />
@@ -59,7 +59,7 @@ function crTwo(res) {
     span += `<span> ${res[idxs].tag[i]} </span>`;
   }
   let a = document.createElement("a");
-  a.href = `${config}/api/book/one?id=${res[idxs]._id}`;
+  a.href = `./book_details.html?id=${res[idxs]._id}`;
   a.innerHTML = `
   <div class="card">
   <img src="${res[idxs].pic}" alt="" />
