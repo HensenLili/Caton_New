@@ -1,7 +1,12 @@
 var idx = 0;
 var lastx = 0;
 var idxs;
-// var yem=0;
+var loading=`<div class="loading">
+            <div class="kuai kuai_one"></div>
+            <div class="kuai kuai_two"></div>
+            <div class="kuai kuai_three"></div>
+            <div class="kuai kuai_four"></div>
+            </div>`
 var dataArr = [
   { page: 1, pageSize: 10, sort: "ture" },
   { page: 1, pageSize: 10, sort: "ture", sex: "0" },
@@ -15,16 +20,21 @@ var adian = document.querySelectorAll(".nav > a ");
 //获取排行数据
 function rank(data) {
   ajax("/api/book", data, "get").then((res) => {
-    idxs = 0;
-    for (let i = 0; i < res.data.length; i++) {
-      if (idx < 3) {
-        crOne(res.data);
-      } else {
-        crTwo(res.data);
+    setTimeout(function(){
+      if(dataArr[lastx].page==1){
+        contt.innerHTML = ""
       }
-      idx++;
-      idxs++;
-    }
+      idxs = 0;
+      for (let i = 0; i < res.data.length; i++) {
+        if (idx < 3) {
+          crOne(res.data);
+        } else {
+          crTwo(res.data);
+        }
+        idx++;
+        idxs++;
+      }
+    },500)
   });
 }
 //载入页面
@@ -78,7 +88,7 @@ for (const i in adian) {
     adian[i].classList.add("anf");
     lastx = i;
     topp.innerHTML = "";
-    contt.innerHTML = "";
+    contt.innerHTML = loading;
     idx = 0;
     data = dataArr[i];
     rank(data);
