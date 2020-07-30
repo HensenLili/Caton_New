@@ -25,8 +25,6 @@ function hank(data,num,callback){
 	})
 }
 
-
-
 hank(data[0],4,(res, i) => {
 	insert(res,i,content[0])
 });
@@ -87,12 +85,14 @@ hank(data[6],1,(res, i) => {
 	insert3(res,i,gufen)
 });
 
+
+var num = parseInt(Math.random()*(100-10)+10)
 function insert3(res,i,crosswise){
 	let a = document.createElement('a')
 	a.innerHTML += `
 	<div class="hot-value">
 		<span></span>
-		30万
+		${num}万
 	</div>
 	<img data-src="https://b.bdstatic.com/mcoweb-searchbox/tmp/1584285559_3318.jpg" class="cover-img bbb" src=${res.data[i].pic}>
 	<div class="content-container">

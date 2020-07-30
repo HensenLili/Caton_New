@@ -6,7 +6,7 @@ var data=[
 	{sex:'0',tag:'热血',sort:'ture',pageSize:6},
 	{sex:'0',tag:'精品',sort:'ture',pageSize:6},
 	{sex:'0',tag:'穿越',sort:'ture',pageSize:6},
-]
+];
 
 	
 var content = document.querySelectorAll('.content')
@@ -87,13 +87,14 @@ var gufen = document.querySelector('.gufen')
 hank(data[6],1,(res, i) => {
 	insert3(res,i,gufen)
 });
+var number = parseInt(Math.random()*(100-10)+10)
 
 function insert3(res,i,crosswise){
 	let a = document.createElement('a')
 	a.innerHTML += `
 	<div class="hot-value">
 		<span></span>
-		30万
+		${number}万
 	</div>
 	<img data-src="https://b.bdstatic.com/mcoweb-searchbox/tmp/1584285559_3318.jpg" class="cover-img bbb" src=${res.data[i].pic}>
 	<div class="content-container">
