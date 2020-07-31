@@ -13,6 +13,7 @@ ajj(cladata);
 
 //获取分类标签
 ajax("/api/tag", {}, "get").then((res) => {
+  if(!res.success){return}
   for (const i in res.data) {
     tag += `<span>${res.data[i].name}</span>`;
   }
@@ -86,7 +87,9 @@ function crThree(res, idx) {
   a.href = `./book_details.html?id=${res[idx]._id}`;
   a.innerHTML = `
     <div class="card">
+    <div>
     <img src="${res[idx].pic}" alt="" />
+    </div>
     <div>
       <p>${res[idx].title}</p>
       <span>更新至 ${res[idx].totalSection}话</span>

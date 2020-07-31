@@ -8,7 +8,7 @@
   height: 0.85rem;
   font-size: 0.365rem;
   background-color: white;
-  border-bottom: .2rem solid #f5f5f5;
+  border-bottom: 0.2rem solid #f5f5f5;
 }
 .nav > a > span {
   display: block;
@@ -62,63 +62,18 @@
   font-weight: 900;
   color: black;
 }
-/* .del {
-  display: none;
+.book > p {
   width: 100%;
-  min-height: 100vh;
-  background-color: white;
-  font-size: 0.35rem;
-}
-.del_nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.3rem 0.4rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-.del_nav > span {
-  display: flex;
-  line-height: 0.44rem;
-}
-.del_nav > span:nth-of-type(1) > span,
-.select {
-  display: inline-block;
-  width: 0.4rem;
-  height: 0.4rem;
-  background-color: white;
-  border-radius: 50%;
-  border: 0.02rem solid black;
-  margin-right: 0.2rem;
-}
-.del_nav > span:nth-of-type(1) > span > img,
-.select > img {
-  width: 0.5rem;
-  height: 0.5rem;
-  transform: translate(-0.05rem,-0.05rem);
-}
-.booktwo {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0rem 0.4rem 1.2rem;
-}
-.booktwo > .card {
-  position: relative;
-  margin: 0;
-}
-.dell {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  font-size: 0.4rem;
+  color: #aaa;
+  margin-top: 4rem;
   text-align: center;
-  background-color: white;
-  line-height: 1.2rem;
-  font-size: 0.43rem;
 }
-.select {
-  position: absolute;
-  top: 2.75rem;
-  right: -0.15rem;
-  border-color: white;
-  background-color: rgba(255, 255, 255, 0);
-} */
+.book > span {
+  display: block;
+  line-height: 0.7rem;
+  margin: 1rem auto 0;
+  padding: 0 0.3rem;
+  background-color: skyblue;
+  border-radius: 5px;
+}

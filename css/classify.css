@@ -39,7 +39,8 @@
     padding: 0.41rem 0.387rem;
     color: #aaa;
   }
-  .card > img {
+  
+  .card >div> img {
     width: 2.03rem;
     margin-right: 0.2rem;
     border-radius: 3px;

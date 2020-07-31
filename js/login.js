@@ -1,5 +1,8 @@
 const config = "http://47.106.96.222:2333";
 var pup = document.querySelector(".pup");
+document.querySelector('.pup>span').onclick=function(){
+  window.location.href="../public/login.html";
+}
 document.querySelector(".back").onclick = function () {
   window.history.go(-1);
 };
@@ -32,9 +35,7 @@ function ajax(Url, data, type) {
 // });
 
 ajax("/api/user", {}, "get").then((res) => {
-  console.log(res);
   if (!res.success) {
-    console.log(1111111);
     pup.style.display = "block";
   }
 });

@@ -21,10 +21,7 @@ var adian = document.querySelectorAll(".nav > a ");
 function rank(data) {
   ajax("/api/book", data, "get").then((res) => {
     console.log(res.success);
-    if(!res.success){
-      
-        return
-    }
+    if(!res.success){return}
     setTimeout(function(){
       if(dataArr[lastx].page==1){
         contt.innerHTML = ""

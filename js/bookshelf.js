@@ -3,12 +3,13 @@ var dataRes;
 var card = false;
 
 ajax("/api/user", {}, "get").then((res) => {
+  if(!res.success){return}
+  book.innerHTML=''
   dataRes = res.data.user.books;
-  console.log(dataRes.length);
   for (const i in dataRes) {
     jiaz(dataRes[i]);
-    if((i-0+1)===(dataRes.length)){
-      if(!(dataRes.length - 2) % 3) {
+    if((i-0+1)==(dataRes.length)){
+      if(!((dataRes.length - 2) % 3)) {
             let div = document.createElement("div");
             div.classList.add('card');
             book.appendChild(div);
