@@ -29,12 +29,12 @@ function book(res) {
 
 //加入书架
 $('.add').click(function () {
-    window.location = '../bookshelf.html';
+    window.location = './bookshelf.html';
 })
 
 //开始阅读
 $('.red').click(function () {
-    window.location = `../book_section.html?id=${id}`;
+    window.location = `./book_section.html?id=${id}`;
 })
 
 //点击详情
