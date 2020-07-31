@@ -22,8 +22,10 @@ function ajax(Url,data,type){
     return ran
 }
 
-ajax('/api/login',{username: "root",password: "root"},'POST')
+ajax('/api/user',{},'GET')
 
 .then(res=>{
-    console.log(res);
+    if(!res.success){
+		
+	}
 });
