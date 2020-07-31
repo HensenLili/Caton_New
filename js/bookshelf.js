@@ -4,10 +4,11 @@ var card = false;
 
 ajax("/api/user", {}, "get").then((res) => {
   dataRes = res.data.user.books;
+  console.log(dataRes.length);
   for (const i in dataRes) {
     jiaz(dataRes[i]);
-    if(i+1==dataRes.length){
-        if((dataRes.length - 2) % 3) {
+    if((i-0+1)===(dataRes.length)){
+      if(!(dataRes.length - 2) % 3) {
             let div = document.createElement("div");
             div.classList.add('card');
             book.appendChild(div);
@@ -18,7 +19,7 @@ ajax("/api/user", {}, "get").then((res) => {
 
 function jiaz(res) {
   let a = document.createElement("a");
-  a.href = `./book_details.html?id=${res._id}`;
+  a.href = `./book_section.html?id=${res._id}`;
   a.innerHTML = `
     <div class="card">
             <img src="${res.pic}" alt="" />
