@@ -29,11 +29,7 @@ function book(res) {
 
 //点击动漫回到首页
 $('.back').click(function(){
-    window.location = `./ranking.html`
-})
-//开始阅读
-$('.red').click(function () {
-    window.location = `./book_section.html?id=${id}`;
+    window.location = `./bookshelf.html`
 })
 
 //点击详情
@@ -91,6 +87,7 @@ function getScore(score, commentCount) {
                                 <div class="number">${res[i].zan}</div>
                             </div>
                         </div>
+                        <div class="timer">${res[i].time}</div>
                         <div class="user_comment">${res[i].content}</div>
                     </div>
                 </div>
@@ -99,6 +96,9 @@ function getScore(score, commentCount) {
         dianzan(res)
     }
 }
+
+
+
 
 //点赞
 var dataza = {}
@@ -133,7 +133,15 @@ ajax('/api/section/all', { bookId: id }, 'GET')
         chapter(res)
         chapterItemAs(res);
         actionSort(res);
+        read(res)
     });
+//开始阅读
+function read(res){
+    $('.red').click(function () {
+        window.location = `./book_section.html?_id=${res.data[0].bookId}&chapter=${res.data[0].chapter}`;
+        console.log(res.data[0].chapter);
+    })
+}
 
 //书籍首页目录正序获取
 function chapterItemAs(res) {
@@ -176,14 +184,6 @@ function actionSort(res) {
     })
 }
 
-//点击章节标题跳转到相对应的章节
-// function chapterSkip(res){
-//     $('.chapter-item').click(function(){
-//         console.log(res.data)
-//         return
-//         window.location = `./book_section.html?chapter=${res.data[0].chapter}`
-//     })
-// }
 
 // 点击查看全部，所有章节出现
 var chapter = () => {}
@@ -294,7 +294,6 @@ ajax('/api/rand', { size: '5' }, 'GET')
     });
 function recommend(res, i) {
     for (let i = 0; i < res.data.length; i++) {
-        console.log(111)
         $('.container-img a')[i].href = `./book_details.html?id=${res.data[i]._id}`
         $('.cover-img')[i].src = `${res.data[i].pic}`
         $('.content-title')[i].innerHTML = `${res.data[i].title}`
@@ -304,12 +303,3 @@ function recommend(res, i) {
 
 }
 
-//根据标签显示相关书单
-ajax('/api/tag', { tag: '3' }, 'GET')
-    .then(function (res) {
-        console.log(res);
-        tagFind(res)
-    });
-function tagFind(res) {
-
-}

@@ -1,8 +1,9 @@
 //获取章节内容
 var f = window.location.href.split("?")[1]
-console.log( window.location.href)
-let id = f.split("&")[0].split('=')[1]
-let chapter = f.split("&")[1].split('=')[1]
+// console.log( window.location.href)
+let id = f.split("&")[0].split("=")[1]
+let chapter = f.split("&")[1].split("=")[1]
+console.log(f.split("&")[1].split("=")[1]);
 var data = { bookId: id, chapter};
 console.log(data)
 function get(data) {
