@@ -22,7 +22,8 @@ function content(res) {
 }
 //点击返回，返回书籍
 $('.back').click(function () {
-    window.location = `../book_details.html?id=${id}`;
+    window.location = `./book_details.html?id=${id}`;
+
 })
 
 //点击下一章，获取下面的章节
