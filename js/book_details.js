@@ -1,12 +1,13 @@
 //获取当前用户登录信息
 ajax('/api/user', {}, 'get')
     .then(res => {
-        console.log(res);
+        // console.log(res);
     });
 
 
 //获取某本书的内容
-ajax('/api/book/one', { id: '5f202c32bfba6437bc262fe3' }, 'get')
+var id = window.location.href.split("=")[1]
+ajax('/api/book/one', { id: id }, 'get')
     .then(res => {
         // console.log(res);
         book(res);
@@ -28,12 +29,12 @@ function book(res) {
 
 //加入书架
 $('.add').click(function () {
-    window.location = 'friends.html';
+    window.location = '../bookshelf.html';
 })
 
 //开始阅读
 $('.red').click(function () {
-    window.location = 'friends.html';
+    window.location = `../book_section.html?id=${id}`;
 })
 
 //点击详情
@@ -58,9 +59,9 @@ $('.extra-intro-item').click(function () {
     $('.interaction').trigger("click");
 })
 //获取某本书的评论互动
-ajax('/api/comment', { bookId: '5f202c32bfba6437bc262fe3', page: 1, pageSize: 5 }, 'get')
+ajax('/api/comment', { bookId: id, page: 1, pageSize: 5 }, 'get')
     .then(res => {
-        console.log(res);
+        // console.log(res);
         render(res.data)
     });
 //添加评论到页面
@@ -109,22 +110,72 @@ function dianzan(res) {
         if (xen) {
             this.nextElementSibling.innerText = Number(this.nextElementSibling.innerText) + 1;
             xen = false;
-            $('.dzan')[0].style.backgroundImage = ` url("../img/hand.png")`
+            $(this)[0].style.backgroundImage = ` url("../img/hand.png")`
         } else {
             this.nextElementSibling.innerText = Number(this.nextElementSibling.innerText) - 1;
-            $('.dzan')[0].style.backgroundImage = ` url(https://s.bdstatic.com/common/openjs/likeComponent/img/like-frame-heavy.png)`
+            $(this)[0].style.backgroundImage = ` url(https://s.bdstatic.com/common/openjs/likeComponent/img/like-frame-heavy.png)`
             xen = true;
+          if(this.isZan==ture){
 
+          }
         }
     })
 }
 
 //获取所有章节信息
-ajax('/api/section/all', { bookId: '5f202c32bfba6437bc262fe3' }, 'GET')
+ajax('/api/section/all', { bookId: id }, 'GET')
     .then(function (res) {
-        console.log(res);
+        // console.log(res);
         chapter(res)
+        chapterItemAs(res);
+        actionSort(res);
     });
+
+//书籍首页目录正序获取
+function chapterItemAs(res) {
+    $('.chapter-list').html('')
+    for (let i = 0; i < 3; i++) {
+        $('.chapter-list').append($(`
+            <div class="chapter-item">
+                <span class="chapter-item-text">${String(res.data[i].title)}</span> 
+            </div>
+        
+        `))
+    }
+}
+//书籍首页目录逆序获取
+function chapterItemRc(res){
+    $('.chapter-list').html('')
+    Goworng(res)
+    for (let i = res.data.length - 1; i > res.data.length -4; i--) {
+        $('.chapter-list').append($(`
+            <div class="chapter-item">
+                <span class="chapter-item-text">${String(res.data[i].title)}</span> 
+            </div>
+        
+        `))
+        
+    }
+}
+//书籍首页目录 倒序，顺序
+var sore = false;
+function actionSort(res) {
+    $('.title-bar-action').click(function () {
+        if (sore) {
+            $('.order-text').html(`正序`)
+            chapterItemAs(res)
+            sore = false;
+        }
+        else {
+            $('.order-text').html(`倒序`)
+            chapterItemRc(res)
+            sore = true
+        }
+    })
+}
+
+
+
 // 点击查看全部，所有章节出现
 var chapter = null
 function getChapter(totalSection) {
@@ -146,7 +197,7 @@ function getChapter(totalSection) {
                     </div>
                     <div class="chater-order">
                         <div class="chapter-index-item">
-                            <span class="chapter-index-item-text">1-30</span> 
+                            <span class="chapter-index-item-text">1-20</span> 
                         </div>
                         <div class="order">
                             <span class="chapter-order-text">升序</span>
@@ -154,23 +205,18 @@ function getChapter(totalSection) {
                     </div>
                 </div>
                 `))
-            //章节升序填充
-            function ascendingFill() {
-                for (let i = 0; i < res.data.length; i++) {
 
-                    $('.chapter-lists').append($(`
-                            <div class="chapter-lists-text">
-                                <div class="list">${String(res.data[i].title)}</div> 
-                            </div>
-                        
-                        `))
-                }
-            }
-            ascendingFill()
+            Goworng(res)
+            ascendingFill(res)
             closeChapter()
-            Sort()
+            Sort(res)
         })
     }
+}
+
+// 去掉false
+function Goworng(res){
+    res.data = res.data.filter(item => "false" !== item.title)
 }
 //点击关闭按钮
 function closeChapter() {
@@ -187,8 +233,9 @@ function closeChapter() {
 
 //章节倒序填充
 function reverseFilling(res) {
-    for (let i = res.data.length-1; i > 0; i--) {
-        $('.chapter-lists').html($(`
+    $('.chapter-lists').html('')
+    for (let i = res.data.length - 1; i > 0; i--) {
+        $('.chapter-lists').append($(`
                         <div class="chapter-lists-text">
                             <div class="list">${String(res.data[i].title)}</div> 
                         </div>
@@ -197,17 +244,31 @@ function reverseFilling(res) {
     }
 }
 
+//章节升序填充
+function ascendingFill(res) {
+    $('.chapter-lists').html('')
+    for (let i = 0; i < res.data.length; i++) {
+        $('.chapter-lists').append($(`
+                <div class="chapter-lists-text">
+                    <div class="list">${String(res.data[i].title)}</div> 
+                </div>
+            
+            `))
+    }
+}
+
 //章节倒序，顺序
 var flag = false;
-function Sort() {
+function Sort(res) {
     $('.order').click(function () {
         if (flag) {
             $('.chapter-order-text').html(`升序`)
-            ascendingFill()
+            ascendingFill(res)
             flag = false;
         }
         else {
             $('.chapter-order-text').html(`倒序`)
+            $('.chapter-index-item-text').html('20-1')
             reverseFilling(res)
             flag = true
         }
@@ -220,23 +281,25 @@ ajax('/api/rand', { size: '5' }, 'GET')
     .then(function (res) {
         console.log(res);
         recommend(res)
+        // console.log(res.data[0]._id);
     });
-    function recommend(res){
-        for(let i = 0 ; i<res.data.length;i++){
-            $('.cover-img')[i].src = `${res.data[i].pic}`
-            $('.content-title')[i].innerHTML = `${res.data[i].title}`
-            $('.content-tag-list')[i].innerHTML = `${res.data[i].tag}`
-           
-        }
-       
+function recommend(res) {
+    for (let i = 0; i < res.data.length; i++) {
+        // window.location = `../book_section.html?id=${id}`;
+        $('.cover-img')[i].src = `${res.data[i].pic}`
+        $('.content-title')[i].innerHTML = `${res.data[i].title}`
+        $('.content-tag-list')[i].innerHTML = `${res.data[i].tag}`
+
     }
 
-    //根据标签显示相关书单
-    ajax('/api/tag', { tag: '3' }, 'GET')
+}
+
+//根据标签显示相关书单
+ajax('/api/tag', { tag: '3' }, 'GET')
     .then(function (res) {
         console.log(res);
         tagFind(res)
     });
-    function tagFind(res){
+function tagFind(res) {
 
-    }
+}

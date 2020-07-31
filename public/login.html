@@ -197,9 +197,6 @@
             url: Url_ + "/api/login",
             type: "POST",
             dataType: "JSON",
-            headers: {
-                Origin: "http://127.0.0.1:5500"
-            },
             data: {
                 username: lowin_username,
                 password: lowin_pwd
@@ -209,7 +206,10 @@
                 withCredentials: true // 携带跨域cookie
             },
             success: function (msg) {
-                console.log(msg)
+                if (msg.success) {
+                    console.log(msg)
+                    // window.location.href = "http://127.0.0.1:5500/public/Personal.html"
+                }
 
             }
         })
