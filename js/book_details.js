@@ -27,14 +27,8 @@ function book(res) {
     $('.item-hot')[0].innerHTML = `${res.data.hot}`
 }
 
-//加入书架
-$('.add').click(function () {
-    $('.add')[0].innerHTML = "去书架"
-    if($('.add').innerHTML = "去书架"){
-        window.location = './bookshelf.html';
-    }
-    
-})
+//已阅读到多少章
+$('.add')[0].innerHTML = ``
 
 //开始阅读
 $('.red').click(function () {
@@ -65,7 +59,7 @@ $('.extra-intro-item').click(function () {
 //获取某本书的评论互动
 ajax('/api/comment', { bookId: id, page: 1, pageSize: 5 }, 'get')
     .then(res => {
-        // console.log(res);
+        console.log(res);
         render(res.data)
     });
 //添加评论到页面
@@ -88,7 +82,7 @@ function getScore(score, commentCount) {
                         <div class="item_top">
                             <div class="user_name">用户名:${res[i].nickname}</div>
                             <div class="unicmt-right">
-                                <div class="dzan"></div>
+                                <div class="dzan" idx='${res[i]._id}'></div>
                                 <div class="number">${res[i].zan}</div>
                             </div>
                         </div>
@@ -102,23 +96,31 @@ function getScore(score, commentCount) {
 }
 
 //点赞
-ajax('/api/zan', { commentId: '5f202c32bfba6437bc263003' }, 'POST')
+var datazan={}
+function dianzan(datazan){
+    ajax('/api/zan', datazan, 'POST')
     .then(res => {
         console.log(res);
         dianzan(res.data);
     });
+}
 //点赞+1，number+1
 var xen = true;
 function dianzan(res) {
     $('.dzan').click(function () {
+datazan.commentId=this.idx;
+console.log(datazan);
+        dianzan(datazan)
+this.classList.toggle('clo')
+
         if (xen) {
             this.nextElementSibling.innerText = Number(this.nextElementSibling.innerText) + 1;
             xen = false;
-            $(this)[0].style.backgroundImage = ` url("../img/hand.png")`
         } else {
             this.nextElementSibling.innerText = Number(this.nextElementSibling.innerText) - 1;
-            $(this)[0].style.backgroundImage = ` url(https://s.bdstatic.com/common/openjs/likeComponent/img/like-frame-heavy.png)`
             xen = true;
+
+
         //   if(this.isZan==ture){
 
         //   }
@@ -285,7 +287,7 @@ ajax('/api/rand', { size: '5' }, 'GET')
     .then(function (res) {
         console.log(res);
         recommend(res)
-        // console.log(res.data[0]._id);
+
     });
 function recommend(res,i) {
     for (let i = 0; i < res.data.length; i++) {
