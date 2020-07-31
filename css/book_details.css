@@ -1,0 +1,593 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html {
+  font-size: 26.6666666vw;
+}
+#book,
+body {
+  position: relative;
+  height: 100%;
+}
+div {
+  display: block;
+}
+body {
+  color: #08c;
+}
+/*---------------书头部------------------------------*/
+.detailnew-view {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.detailnew-info {
+  position: relative;
+  height: 2.34rem;
+}
+.detailnew-bj {
+  width: 100%;
+  height: 2.34rem;
+  background-image: linear-gradient(
+      -180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.8) 100%
+    ),
+    url("http://t7.baidu.com/it/u=1941620025,3407230191&fm=83&app=66&f=JPEG?w=629&h=369&s=25B3719702E47ABE940105C903007033");
+  background-size: cover;
+}
+.detailnew-title,
+.info-author,
+.info-tags {
+  position: absolute;
+  padding: 0 0.17rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: PingFangSC-Semibold;
+  font-size: 0.24rem;
+  color: #fff;
+  letter-spacing: 0;
+  line-height: 0.36rem;
+  max-height: 0.75rem;
+  font-weight: 700;
+  bottom: 0.63rem;
+}
+.detailnew-info .info-tags .info-tags-item {
+  display: inline-block;
+}
+.detailnew-info .info-author,
+.detailnew-info .info-tags {
+  font-family: PingFangSC-Regular;
+  font-size: 0.13rem;
+  line-height: 0.13rem;
+  bottom: 0.45rem;
+  font-weight: 500;
+}
+.detailnew-info .info-tags {
+  bottom: 0.17rem;
+  font-size: 0.1rem;
+}
+.base-tag-text {
+  border: 1px solid white;
+  display: inline-block;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+  padding: 0 2px;
+  position: relative;
+  margin-right: 0.05rem;
+}
+/*------------------------button-------------------------*/
+.detailnew-action {
+  padding: 0.15rem 0.17rem 0.23rem;
+
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+}
+.button {
+  height: 0.4rem;
+  text-align: center;
+  font-size: 0.16rem;
+  align-items: center;
+  line-height: 0.4rem;
+}
+.add {
+  border: 1px solid gray;
+  border-radius: 20px;
+  width: 100px;
+  color: black;
+}
+.red {
+  border: 1px solid red;
+  background-color: red;
+  border-radius: 20px;
+  width: 180px;
+  color: white;
+}
+/*----------------------详情，互动-----------------------*/
+.detailnew-tab {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 16px;
+  text-align: center;
+  color: #666;
+}
+.action{
+  color: red;
+  border-bottom: 2px solid red;
+}
+.tab-title {
+  height: 0.39rem;
+  display: inline-block;
+  line-height: 0.39rem;
+}
+.detailnew-intro {
+  background-color: #fff;
+}
+.detailnew-intro .intro {
+  padding: 0.14rem 0.17rem 0;
+  position: relative;
+}
+.interaction-page{
+    display: none;
+}
+.record{
+    position: relative;
+    height: .24rem;
+    line-height: .24rem;
+    font-size: 0;
+    /* padding-bottom: .15rem; */
+    padding: 10px 25px;
+}
+.score{
+  display: inline-block;
+  font-family: PingFangSC-Semibold;
+  font-size: .24rem;
+  color: #ff3d4a;
+  letter-spacing: 0;
+  padding-right: .11rem;
+}
+.commentCount{
+  display: inline-block;
+  font-family: PingFangSC-Regular;
+  font-size: .16rem;
+  color: #999;
+  letter-spacing: 0;
+}
+.hot{
+  font-family: PingFangSC-Regular;
+  font-size: .16rem;
+  color:black;
+  letter-spacing: 0;
+  padding: 10px 25px;
+}
+.unicmt-item{
+  display: flex;
+  font-size: 12px;
+  padding: 10px 17px;
+}
+.head_logo{
+  border-radius: 50%;
+  width: 30px;
+  display: inline-block;
+  padding-right: .11rem;
+}
+.content-mess{
+  display: flex;
+  flex-direction: column;
+}
+.item_top{
+  display: flex;
+  justify-content: space-between;
+  width: 290px;
+}
+.user_name{
+  color: #4b78b2;
+  padding: 5px;
+  font-family: Helvetica ;
+}
+.unicmt-righ{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  height: 23px;
+  background-color: rebeccapurple;
+}
+.dzan{
+  width: 23px;
+  height: 23px;
+  background-size: cover;
+  display: inline-block;
+  background-image: url(https://s.bdstatic.com/common/openjs/likeComponent/img/like-frame-heavy.png);
+}
+.number{
+  color: black;
+  font-size: 12px;
+  display: inline-block;
+  transform: translateY(-6px);
+}
+.user_comment{
+  color: #000;
+  padding: 5px;
+}
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+.detailnew-intro .intro p {
+  font-family: PingFangSC-Regular;
+  color: #666;
+  letter-spacing: 0;
+  text-align: left;
+  font-size: 0.14rem;
+  line-height: 0.21rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 100;
+  -webkit-box-orient: vertical;
+}
+.extra-intro {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  height: 0.72rem;
+  width: 100%;
+  position: relative;
+}
+.item-value {
+  padding-top: 0.15rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.16rem;
+  color: #ff3d4a;
+  letter-spacing: 0;
+  text-align: justify;
+  line-height: 0.16rem;
+  text-align: center;
+}
+.item-title {
+  padding-top: 0.08rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.13rem;
+  color: #999;
+  letter-spacing: 0;
+  text-align: justify;
+  line-height: 0.13rem;
+  text-align: center;
+}
+
+/*-----------------目录----------------------------*/
+.detailnew-chapter {
+  position: relative;
+  border-top: 0.06rem solid #f5f5f5;
+  background-color: #fff;
+}
+.title-bar {
+  padding: 0 0.17rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  position: relative;
+}
+.title-text {
+  font-family: PingFangSC-Semibold;
+  font-size: 0.16rem;
+  color: #000;
+  letter-spacing: 0;
+  height: 0.5rem;
+  line-height: 0.5rem;
+}
+.title-bar-action {
+  position: absolute;
+  right: 0.17rem;
+  top: 0;
+  font-size: 0;
+}
+
+.order-text {
+  padding-right: 0.03rem;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: PingFangSC-Regular;
+  font-size: 0.13rem;
+  color: #ff3d4a;
+  letter-spacing: 0;
+  text-align: right;
+  height: 0.5rem;
+  line-height: 0.5rem;
+}
+.chapter-list {
+  position: relative;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 0.17rem;
+}
+.chapter-item {
+  width: 100%;
+  height: 0.49rem;
+  line-height: 0.49rem;
+  font-size: 0;
+  position: relative;
+  margin-bottom: .1rem;
+  border-radius: .05rem;
+}
+.chapter-item-text {
+  display: inline-block;
+  font-family: PingFangSC-Regular;
+  font-size: 0.16rem;
+  color: #333;
+  letter-spacing: 0;
+  text-align: justify;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 0.65rem;
+  box-sizing: border-box;
+  
+}
+.showmore-bar {
+  height: 0.44rem;
+  line-height: 0.44rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.16rem;
+  color: #999;
+  letter-spacing: 0;
+  text-align: center;
+}
+/*-----------------------章节内容------------------------------*/
+.chapters{
+  width: 100%;
+  height: 80%;
+  display: none;
+}
+.chapter-title-bar{
+  font-size: 16px;
+  color: black;
+  margin: 20px 20px 15px 20px;
+}
+.chapter-status{
+  font-family: PingFangSC-Semibold;
+  font-weight: 700;
+}
+.chapter-status-text{
+  font-family: PingFangSC-Regular;
+  font-size: .13rem;
+  color: #999;
+  padding-left: .05rem;
+}
+.chater-close-icon{
+  width: 15px;
+  height: 15px;
+  background-image: url(data:image/png;base64,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);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  transform: translateX(175px);
+}
+.chater-order{
+  display: flex;
+  justify-content: space-between;
+}
+.chapter-index-item{
+  margin: 5px 20px 15px 20px;
+  font-size: 18px;
+  
+}
+.chapter-index-item-text{
+  width: .5rem;
+  height: .3rem;
+  font-family: PingFangSC-Regular;
+  display: block;
+  /* font-size: 1px; */
+  color:black;
+  line-height: .3rem;
+}
+.order{
+  width: .61rem;
+    height: .23rem;
+    border: 1px solid #999;
+    border-radius: .37rem;
+    text-align: center;
+    font-size: 0;
+    transform: translate(-26px,7px);
+}
+.chapter-order-text{
+  font-size: 13px;
+  display: inline-block;
+  vertical-align: top;
+  height: .21rem;
+  line-height: .21rem;
+  color: #999;
+}
+.chapter-lists{
+  display:none;
+  padding: 10px 0 0 20px;
+}
+.chapter-lists-text{
+    font-family: PingFangSC-Regular;
+    font-size: .16rem;
+    color: #333;
+    letter-spacing: 0;
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0 0 10px 0 ;
+}
+.list{
+  display: inline-block;
+}
+/*-------------------------相关推荐-----------------------------*/
+.top-border {
+  font-size: 26.6666666vw;
+  color: #08c;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+  border-top: 0.06rem solid #f5f5f5;
+  background-color: #fff;
+}
+.container-list{
+    overflow: scroll;
+    display: flex;
+}
+.container{
+    width: 100%;
+    background-color: #fff;
+    padding-left: 0.17rem;
+    font-size: 1px;
+   
+}
+.module-title-container {
+    width: 100%;
+    padding: 0.17rem;
+    display: -ms-flexbox;
+    display: flex;
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+.module-title {
+  font-size: 0.16rem;
+  line-height: 0.16rem;
+  letter-spacing: 0;
+  font-weight: 700;
+  color: #000;
+  -ms-flex: 1;
+  flex: 1;
+}
+.cover-img {
+    display: block;
+    width: 111px;
+    height: 147.99px;
+    border-radius: .03rem;
+    margin-bottom: 0.05rem;
+}
+a{
+    text-decoration: none;
+}
+.content-title{
+    color: #333;
+    margin-bottom: .05rem;
+    font-size: .14rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 400;
+}
+.content-tag-list {
+    width: 111px;
+    height: 21px;
+    display: inline-block;
+    color: #999;
+    font-size: 11px;
+}
+.base-tag-item {
+    display: inline-block;
+    height: 15px;
+    width: 26px;
+    margin-right: .06rem;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: center;
+    color: #999;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAcBAMAAADVQiH5AAAALVBMVEUAAACYmJiXl5eZmZmYmJiYmJiYmJiZmZmfn5+YmJiZmZmZmZmnp6eYmJiYmJgJpPbcAAAAD3RSTlMAq4dusbqgIRSDWC8Nl0PO0dPAAAAAQklEQVQoz2PgSBHEAlw2MLQWMGABPHkM6QxYASuDA3YJJgYB7BLMoxLDVwJHYuBkkMCVfEoOYJWYxcDtpoQFXF0AAFfvDPCFxO7yAAAAAElFTkSuQmCC) no-repeat 50%;
+    background-size: 26px 15px;
+}
+.sideslip {
+    display: -webkit-box;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    transform: translateZ(0);
+    height: 100%;
+}
+
+.book-list{
+    margin-left: 0.17rem;
+    margin-right: 0.04rem; 
+    width: 43.47vw;
+}
+.cc-img{
+    position: relative;
+    /* padding-bottom: 56.25%; */
+    overflow: hidden;
+    border-top-left-radius: .03rem;
+    border-top-right-radius: .03rem;
+}
+.cc-img img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.cc-mask{
+    bottom: 0;
+    right: 0;
+    opacity: .5;
+    background-image: linear-gradient(180deg,transparent,#000 82%);
+    z-index: 2;
+    width: 163px;
+    height: 91px;
+}
+.cblc .cc-img .cc-info {
+    position: absolute;
+    bottom: .12rem;
+    left: 0;
+    padding-left: .12rem;
+    box-sizing: border-box;
+    width: 100%;
+    color: #fff;
+    z-index: 3;
+}
+.cc-title,.cc-desc{
+    display: block;
+   font-size: 16px;
+   position: absolute;
+   top: 20px;
+   color: white;
+   left: 25px;
+}
+.cc-desc{
+  top: 45px;
+  font-size: 12px;
+}
+.cc-content {
+    padding: 0 .12rem;
+    padding-bottom: .17rem;
+    border: 1px solid #eee;
+    border-top: 0;
+    border-bottom-left-radius: .03rem;
+    border-bottom-right-radius: .03rem;
+}
+.cc-booklist {
+    list-style-type: none;
+    padding-top: .11rem;
+    font-size: .14rem;
+    color: #333;
+}
+.cc-booklist li {
+    width: 100%;
+    line-height: .22rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.cc-count {
+    margin-top: .12rem;
+    font-size: .13rem;
+    height: .13rem;
+    line-height: .13rem;
+    color: #999;
+}

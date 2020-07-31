@@ -1,4 +1,7 @@
-const config='http://47.106.96.222:2333'
+const config='http://47.106.96.222:2333';
+document.querySelector('.back').onclick=function(){
+    window.history.go(-1)
+}
 
 function ajax(Url,data,type){
     let ran=new Promise(function(resolve,reject){
@@ -31,3 +34,16 @@ ajax('/api/user',{},'get')
 .then(res=>{
     console.log(res);
 });
+
+//内容总高度
+function scrollHeight() {
+    return document.documentElement.scrollHeight || document.body.scrollHeight;
+  }
+  //视窗高度
+  function clientHeight() {
+    return document.documentElement.clientHeight || document.body.clientHeight;
+  }
+  //滚动区域的高度
+  function scrollTop() {
+    return document.documentElement.scrollTop || document.body.scrollTop;
+  }

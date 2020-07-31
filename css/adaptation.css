@@ -1,60 +1,64 @@
 @media screen and (min-width: 350px) {
   html {
-    font-size: 342%;
+    font-size: 41.04px;
   }
 }
 @media screen and (min-width: 360px) {
   html {
-    font-size: 351.56%;
+    font-size: 42.1872px;
   }
 }
 @media screen and (min-width: 375px) {
   html {
-    font-size: 366.2%;
+    font-size: 43.944px;
   }
 }
 @media screen and (min-width: 384px) {
   html {
-    font-size: 375%;
+    font-size: 45px;
   }
 }
 @media screen and (min-width: 390px) {
   html {
-    font-size: 380.85%;
+    font-size: 45.702px;
   }
 }
 @media screen and (min-width: 393px) {
   html {
-    font-size: 383.79%;
+    font-size: 46.0548px;
   }
 }
 @media screen and (min-width: 410px) {
   html {
-    font-size: 400%;
+    font-size: 48px;
   }
 }
 @media screen and (min-width: 432px) {
   html {
-    font-size: 421.875%;
+    font-size: 50.625px;
   }
 }
 @media screen and (min-width: 480px) {
   html {
-    font-size: 469%;
+    font-size: 56.28px;
   }
 }
 @media screen and (min-width: 540px) {
   html {
-    font-size: 527.34%;
+    font-size: 63.2808px;
   }
 }
 @media screen and (min-width: 640px) {
   html {
-    font-size: 625%;
+    font-size: 75px;
   }
 }
-@media screen and (width: 720px) {
+@media screen and (min-width: 720px) {
   html {
-    font-size: 703.125%;
+    font-size: 84.375px;
   }
 }
+
+/* html {
+  font-size: 43.944px;
+} */
