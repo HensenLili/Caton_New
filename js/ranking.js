@@ -20,6 +20,11 @@ var adian = document.querySelectorAll(".nav > a ");
 //获取排行数据
 function rank(data) {
   ajax("/api/book", data, "get").then((res) => {
+    console.log(res.success);
+    if(!res.success){
+      
+        return
+    }
     setTimeout(function(){
       if(dataArr[lastx].page==1){
         contt.innerHTML = ""
