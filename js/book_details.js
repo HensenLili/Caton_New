@@ -54,7 +54,7 @@ $('.extra-intro-item').click(function () {
     $('.interaction').trigger("click");
 })
 //获取某本书的评论互动
-ajax('/api/comment', { bookId: id, page: 1, pageSize: 5 }, 'get')
+ajax('/api/comment', { bookId: id, page: 1, pageSize: 20 }, 'get')
     .then(res => {
         console.log(res);
         render(res.data)
