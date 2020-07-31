@@ -6,7 +6,8 @@ ajax('/api/user', {}, 'get')
 
 
 //获取某本书的内容
-ajax('/api/book/one', { id: '5f202c32bfba6437bc262fe3' }, 'get')
+var id = window.location.href.split("=")[1]
+ajax('/api/book/one', { id: id }, 'get')
     .then(res => {
         // console.log(res);
         book(res);
@@ -33,7 +34,7 @@ $('.add').click(function () {
 
 //开始阅读
 $('.red').click(function () {
-    window.location = '../book_section.html';
+    window.location = `../book_section.html?id=${id}`;
 })
 
 //点击详情
@@ -58,7 +59,7 @@ $('.extra-intro-item').click(function () {
     $('.interaction').trigger("click");
 })
 //获取某本书的评论互动
-ajax('/api/comment', { bookId: '5f202c32bfba6437bc262fe3', page: 1, pageSize: 5 }, 'get')
+ajax('/api/comment', { bookId: id, page: 1, pageSize: 5 }, 'get')
     .then(res => {
         // console.log(res);
         render(res.data)
@@ -122,7 +123,7 @@ function dianzan(res) {
 }
 
 //获取所有章节信息
-ajax('/api/section/all', { bookId: '5f202c32bfba6437bc262fe3' }, 'GET')
+ajax('/api/section/all', { bookId: id }, 'GET')
     .then(function (res) {
         // console.log(res);
         chapter(res)
@@ -196,7 +197,7 @@ function getChapter(totalSection) {
                     </div>
                     <div class="chater-order">
                         <div class="chapter-index-item">
-                            <span class="chapter-index-item-text">1-30</span> 
+                            <span class="chapter-index-item-text">1-20</span> 
                         </div>
                         <div class="order">
                             <span class="chapter-order-text">升序</span>
@@ -267,6 +268,7 @@ function Sort(res) {
         }
         else {
             $('.chapter-order-text').html(`倒序`)
+            $('.chapter-index-item-text').html('20-1')
             reverseFilling(res)
             flag = true
         }
@@ -277,11 +279,13 @@ function Sort(res) {
 //随机查询书
 ajax('/api/rand', { size: '5' }, 'GET')
     .then(function (res) {
-        // console.log(res);
+        console.log(res);
         recommend(res)
+        // console.log(res.data[0]._id);
     });
 function recommend(res) {
     for (let i = 0; i < res.data.length; i++) {
+        // window.location = `../book_section.html?id=${id}`;
         $('.cover-img')[i].src = `${res.data[i].pic}`
         $('.content-title')[i].innerHTML = `${res.data[i].title}`
         $('.content-tag-list')[i].innerHTML = `${res.data[i].tag}`
