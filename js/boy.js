@@ -115,3 +115,24 @@ var searchfor = document.querySelector('.searchfor')
 searchfor.addEventListener('click',()=>{
 	window.location.href = "search.html";
 })
+
+var nanshengbang = document.querySelector(".nanshengbang")
+var nansheng = document.querySelector(".nansheng")
+function aaaaaaa(aadx){
+	aadx.addEventListener('click',()=>{
+		window.location.href = "classify.html";
+	})
+}
+aaaaaaa(nanshengbang)
+aaaaaaa(nansheng)
+
+var back = document.querySelector(".back")
+
+back.addEventListener('click',()=>{
+		window.go(-1);
+	})
+	
+	var user = document.querySelector(".user")
+	user.onclick = function() {
+		window.location.href = "./public/login.html";
+	}

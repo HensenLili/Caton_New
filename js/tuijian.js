@@ -1,14 +1,45 @@
-var data=[
-	{tag:'自制',sort:'ture',pageSize:4},
-	{tag:'恋爱',sort:'ture',pageSize:7},
-	{tag:'独家',sort:'ture',pageSize:6},
-	{tag:'古风',sort:'ture',pageSize:6},
-	{tag:'热血',sort:'ture',pageSize:6},
-	{tag:'精品',sort:'ture',pageSize:6},
-	{tag:'穿越',sort:'ture',pageSize:6},
-	{tag:'神魔',sort:'ture',pageSize:6}
+var data = [{
+		tag: '自制',
+		sort: 'ture',
+		pageSize: 4
+	},
+	{
+		tag: '恋爱',
+		sort: 'ture',
+		pageSize: 7
+	},
+	{
+		tag: '独家',
+		sort: 'ture',
+		pageSize: 6
+	},
+	{
+		tag: '古风',
+		sort: 'ture',
+		pageSize: 6
+	},
+	{
+		tag: '热血',
+		sort: 'ture',
+		pageSize: 6
+	},
+	{
+		tag: '精品',
+		sort: 'ture',
+		pageSize: 6
+	},
+	{
+		tag: '穿越',
+		sort: 'ture',
+		pageSize: 6
+	},
+	{
+		tag: '神魔',
+		sort: 'ture',
+		pageSize: 6
+	}
 ]
-	
+
 var content = document.querySelector('.content')
 var crosswise = document.querySelectorAll('.crosswise')
 // console.log(crosswise[0])
@@ -16,21 +47,21 @@ var gufen = document.querySelectorAll(".gufen")
 // console.log(gufen)
 var man = document.querySelector('.man')
 var nv = document.querySelector('.nv')
-var shujia =document.querySelector('.shujia')
+var shujia = document.querySelector('.shujia')
 
 
 //接点
-function hank(data,num,callback){
-	ajax("/api/book",data,"GET").then((res)=>{
+function hank(data, num, callback) {
+	ajax("/api/book", data, "GET").then((res) => {
 		// console.log(res,data)
-		
-		for(var i = 0;i<res.data.length;i++){
+
+		for (var i = 0; i < res.data.length; i++) {
 			// console.log(res.data[i].title)
 			// console.log(res.data[i]._id)
 			// console.log(res.data[i].pic)
 			// console.log(res.data[i].desc)
-			if(i<num){
-				callback && callback(res,i)
+			if (i < num) {
+				callback && callback(res, i)
 			}
 		}
 	})
@@ -38,15 +69,16 @@ function hank(data,num,callback){
 
 
 
-hank(data[0],4,(res, i) => {
-	insert(res,i)
+hank(data[0], 4, (res, i) => {
+	insert(res, i)
 });
 
 //插入新作
-function  insert(res,i){
+function insert(res, i) {
 	let a = document.createElement('a')
 	a.href = `./book_details.html?id=${res.data[i]._id}`
-	a.innerHTML += `
+	a.innerHTML +=
+		`
 	<div class="painting">
 		<img class="painting-img" src=${res.data[i].pic} class="cover-img">
 		<h5 class="h5">${res.data[i].title}</h5>
@@ -62,14 +94,15 @@ function  insert(res,i){
 }
 
 
-hank(data[1],6,(res, i) => {
-	insert1(res,i,crosswise[0])
+hank(data[1], 6, (res, i) => {
+	insert1(res, i, crosswise[0])
 });
 
-function insert1(res,i,crosswise){
+function insert1(res, i, crosswise) {
 	let a = document.createElement('a')
 	a.href = `./book_details.html?id=${res.data[i]._id}`
-	a.innerHTML += `
+	a.innerHTML +=
+		`
 	<div class="crosswisebox">
 		<img data-src="http://t7.baidu.com/it/u=1482211986,3652282590&amp;fm=83&amp;app=66&amp;f=JPEG?w=315&amp;h=420&amp;s=55A294F25402E5FD5C25847403000093"  id = "crosswise-img" src=${res.data[i].pic}>
 		<h5 class="h5">${res.data[i].title}</h5>
@@ -82,25 +115,26 @@ function insert1(res,i,crosswise){
 }
 
 
-hank(data[2],6,(res, i) => {
-	insert1(res,i,crosswise[1])
+hank(data[2], 6, (res, i) => {
+	insert1(res, i, crosswise[1])
 });
-hank(data[5],6,(res, i) => {
-	insert1(res,i,crosswise[4])
+hank(data[5], 6, (res, i) => {
+	insert1(res, i, crosswise[4])
 });
-hank(data[6],6,(res, i) => {
-	insert1(res,i,crosswise[5])
+hank(data[6], 6, (res, i) => {
+	insert1(res, i, crosswise[5])
 });
 
 //插三条的
-hank(data[3],3,(res, i) => {
-	insert2(res,i,crosswise[2])
+hank(data[3], 3, (res, i) => {
+	insert2(res, i, crosswise[2])
 });
 
-function insert2(res,i,crosswise){
+function insert2(res, i, crosswise) {
 	let a = document.createElement('a')
 	a.href = `./book_details.html?id=${res.data[i]._id}`
-	a.innerHTML += `
+	a.innerHTML +=
+		`
 	<div class="crosswisebox">
 		<img data-src="http://t7.baidu.com/it/u=1482211986,3652282590&amp;fm=83&amp;app=66&amp;f=JPEG?w=315&amp;h=420&amp;s=55A294F25402E5FD5C25847403000093" class="painting-img" id = "crosswise-img" src=${res.data[i].pic}>
 		<div class="hot-value"><span></span>100万</div>
@@ -113,31 +147,32 @@ function insert2(res,i,crosswise){
 	crosswise.appendChild(a)
 }
 
-hank(data[4],3,(res, i) => {
-	insert2(res,i,crosswise[3])
+hank(data[4], 3, (res, i) => {
+	insert2(res, i, crosswise[3])
 });
-hank(data[7],3,(res, i) => {
-	insert2(res,i,crosswise[6])
+hank(data[7], 3, (res, i) => {
+	insert2(res, i, crosswise[6])
 });
 
 
 
 
 //插大图的
-hank(data[1],1,(res, i) => {
-	insert3(res,i,gufen[0])
+hank(data[1], 1, (res, i) => {
+	insert3(res, i, gufen[0])
 });
-hank(data[6],1,(res, i) => {
-	insert3(res,3,gufen[1])
+hank(data[6], 1, (res, i) => {
+	insert3(res, 3, gufen[1])
 });
-hank(data[3],1,(res, i) => {
-	insert3(res,i,gufen[2])
+hank(data[3], 1, (res, i) => {
+	insert3(res, i, gufen[2])
 });
 
-function insert3(res,i,gufen){
+function insert3(res, i, gufen) {
 	let a = document.createElement('a')
 	a.href = `./book_details.html?id=${res.data[i]._id}`
-	a.innerHTML += `
+	a.innerHTML +=
+		`
 	<div class="hot-value">
 		<span></span>
 		60万
@@ -152,12 +187,40 @@ function insert3(res,i,gufen){
 	gufen.appendChild(a)
 }
 
+//跳转
 var searchfor = document.querySelector('.searchfor')
-
-searchfor.addEventListener('click',()=>{
+searchfor.addEventListener('click', () => {
 	window.location.href = "search.html";
 })
 
+var aaaaaa = document.querySelector('.aaaaaa')
+aaaaaa.addEventListener('click', () => {
+	window.location.href = "search.html";
+})
+
+var sujia =document.querySelector(".sujia")
+sujia.addEventListener('click', () => {
+	window.location.href = "bookshelf.html";
+})
+
+man.onclick = function() {
+	window.location.href = "boy.html";
+}
+nv.onclick = function() {
+	window.location.href = "girl.html";
+}
 
 
+shujia.onclick = function() {
+	window.location.href = "bookshelf.html";
+}
+var back = document.querySelector(".back")
 
+back.addEventListener('click',()=>{
+		window.go(-1);
+	})
+
+var user = document.querySelector(".user")
+user.onclick = function() {
+	window.location.href = "./public/login.html";
+}
