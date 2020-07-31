@@ -34,8 +34,8 @@ body {
       -180deg,
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 0.8) 100%
-    ),
-    url("http://t7.baidu.com/it/u=1941620025,3407230191&fm=83&app=66&f=JPEG?w=629&h=369&s=25B3719702E47ABE940105C903007033");
+    );
+    /* url("http://t7.baidu.com/it/u=1941620025,3407230191&fm=83&app=66&f=JPEG?w=629&h=369&s=25B3719702E47ABE940105C903007033"); */
   background-size: cover;
 }
 .detailnew-title,

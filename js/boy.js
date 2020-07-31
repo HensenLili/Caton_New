@@ -6,7 +6,7 @@ var data=[
 	{sex:'0',tag:'热血',sort:'ture',pageSize:6},
 	{sex:'0',tag:'精品',sort:'ture',pageSize:6},
 	{sex:'0',tag:'穿越',sort:'ture',pageSize:6},
-]
+];
 
 	
 var content = document.querySelectorAll('.content')
@@ -37,7 +37,7 @@ hank(data[4],4,(res, i) => {
 //插入新作
 function  insert(res,i,content){
 	let a = document.createElement('a')
-	
+	a.href = `./book_details.html?id=${res.data[i]._id}`
 	a.innerHTML += `
 	<div class="painting">
 		<img class="painting-img" src=${res.data[i].pic} class="cover-img">
@@ -70,6 +70,7 @@ hank(data[6],6,(res, i) => {
 
 function insert1(res,i,crosswise){
 	let a = document.createElement('a')
+	a.href = `./book_details.html?id=${res.data[i]._id}`
 	a.innerHTML += `
 	<div class="crosswisebox">
 		<img data-src="http://t7.baidu.com/it/u=1482211986,3652282590&amp;fm=83&amp;app=66&amp;f=JPEG?w=315&amp;h=420&amp;s=55A294F25402E5FD5C25847403000093"  id = "crosswise-img" src=${res.data[i].pic}>
@@ -87,13 +88,15 @@ var gufen = document.querySelector('.gufen')
 hank(data[6],1,(res, i) => {
 	insert3(res,i,gufen)
 });
+var number = parseInt(Math.random()*(100-10)+10)
 
 function insert3(res,i,crosswise){
 	let a = document.createElement('a')
+	a.href = `./book_details.html?id=${res.data[i]._id}`
 	a.innerHTML += `
 	<div class="hot-value">
 		<span></span>
-		30万
+		${number}万
 	</div>
 	<img data-src="https://b.bdstatic.com/mcoweb-searchbox/tmp/1584285559_3318.jpg" class="cover-img bbb" src=${res.data[i].pic}>
 	<div class="content-container">
@@ -106,3 +109,9 @@ function insert3(res,i,crosswise){
 	`;
 	gufen.appendChild(a)
 }
+
+var searchfor = document.querySelector('.searchfor')
+
+searchfor.addEventListener('click',()=>{
+	window.location.href = "search.html";
+})
