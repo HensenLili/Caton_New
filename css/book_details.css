@@ -95,18 +95,18 @@ body {
   align-items: center;
   line-height: 0.4rem;
 }
-.add {
-  border: 1px solid gray;
-  border-radius: 20px;
-  width: 100px;
-  color: black;
-}
-.red {
+.add,.red {
   border: 1px solid red;
   background-color: red;
   border-radius: 20px;
-  width: 180px;
+  width: 120px;
   color: white;
+}
+.back{
+  border: 1px solid #333;
+  color: black;
+  width: 80px;
+  border-radius: 20px;
 }
 /*----------------------详情，互动-----------------------*/
 .detailnew-tab {
@@ -419,6 +419,7 @@ p {
 .chapter-lists-text{
     font-family: PingFangSC-Regular;
     font-size: .16rem;
+    width: 100%;
     color: #333;
     letter-spacing: 0;
     text-align: justify;
@@ -426,6 +427,7 @@ p {
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: 0 0 10px 0 ;
+    height: 50px;
 }
 .list{
   display: inline-block;
@@ -478,6 +480,7 @@ p {
 }
 a{
     text-decoration: none;
+    color: #333;
 }
 .content-title{
     color: #333;

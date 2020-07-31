@@ -1,15 +1,14 @@
 //获取当前用户登录信息
 ajax('/api/user', {}, 'get')
     .then(res => {
-        // console.log(res);
+        console.log(res.data);
     });
-
 
 //获取某本书的内容
 var id = window.location.href.split("=")[1]
 ajax('/api/book/one', { id: id }, 'get')
     .then(res => {
-        // console.log(res);
+        console.log(res);
         book(res);
         render = getScore(res.data.score, res.data.commentCount)
         chapter = getChapter(res.data.totalSection)
@@ -25,11 +24,13 @@ function book(res) {
     $('.updata')[0].innerHTML = `更新至${res.data.totalSection}话`
     $('.item-score')[0].innerHTML = `${res.data.score}`
     $('.item-hot')[0].innerHTML = `${res.data.hot}`
+    $('.add')[0].innerHTML = `全站排名:${res.data.order}`
 }
 
-//已阅读到多少章
-$('.add')[0].innerHTML = ``
-
+//点击动漫回到首页
+$('.back').click(function(){
+    window.location = `./ranking.html`
+})
 //开始阅读
 $('.red').click(function () {
     window.location = `./book_section.html?id=${id}`;
@@ -63,7 +64,7 @@ ajax('/api/comment', { bookId: id, page: 1, pageSize: 5 }, 'get')
         render(res.data)
     });
 //添加评论到页面
-var render = null
+var render = () => {}
 function getScore(score, commentCount) {
     return function bookDetails(res) {
         $('.interaction-page').append($(`
@@ -73,6 +74,10 @@ function getScore(score, commentCount) {
         </div>
         <div class="hot">热门评论</div>`))
         for (let i = 0; i < res.length; i++) {
+            let clas = 'dzan'
+            if (res[i].isZan) {
+                clas = 'dzan clo'
+            }
             $('.interaction-page').append($(`
                 <div class="unicmt-item">
                     <div>
@@ -82,7 +87,7 @@ function getScore(score, commentCount) {
                         <div class="item_top">
                             <div class="user_name">用户名:${res[i].nickname}</div>
                             <div class="unicmt-right">
-                                <div class="dzan" idx='${res[i]._id}'></div>
+                                <div class="${clas}" idx='${res[i]._id}'></div>
                                 <div class="number">${res[i].zan}</div>
                             </div>
                         </div>
@@ -96,34 +101,27 @@ function getScore(score, commentCount) {
 }
 
 //点赞
-var datazan={}
-function dianzan(datazan){
-    ajax('/api/zan', datazan, 'POST')
-    .then(res => {
-        console.log(res);
-        dianzan(res.data);
-    });
+var dataza = {}
+function dianzanl(data) {
+    ajax('/api/zan', data, 'POST')
+        .then(res => {
+            console.log(res);
+        });
 }
 //点赞+1，number+1
 var xen = true;
 function dianzan(res) {
     $('.dzan').click(function () {
-datazan.commentId=this.idx;
-console.log(datazan);
-        dianzan(datazan)
-this.classList.toggle('clo')
-
+        console.log(2222);
+        dataza.commentId = this.getAttribute('idx');
+        this.classList.toggle('clo')
+        dianzanl(dataza);
         if (xen) {
             this.nextElementSibling.innerText = Number(this.nextElementSibling.innerText) + 1;
             xen = false;
         } else {
             this.nextElementSibling.innerText = Number(this.nextElementSibling.innerText) - 1;
             xen = true;
-
-
-        //   if(this.isZan==ture){
-
-        //   }
         }
     })
 }
@@ -131,7 +129,7 @@ this.classList.toggle('clo')
 //获取所有章节信息
 ajax('/api/section/all', { bookId: id }, 'GET')
     .then(function (res) {
-        // console.log(res);
+        console.log(res);
         chapter(res)
         chapterItemAs(res);
         actionSort(res);
@@ -143,24 +141,22 @@ function chapterItemAs(res) {
     for (let i = 0; i < 3; i++) {
         $('.chapter-list').append($(`
             <div class="chapter-item">
-                <span class="chapter-item-text">${String(res.data[i].title)}</span> 
+            <span class="chapter-item-text"><a href='./book_section.html?_id=${res.data[i].bookId}&chapter=${res.data[i].chapter}'>${String(res.data[i].title)}</a></span> 
             </div>
         
         `))
     }
 }
 //书籍首页目录逆序获取
-function chapterItemRc(res){
+function chapterItemRc(res) {
     $('.chapter-list').html('')
     Goworng(res)
-    for (let i = res.data.length - 1; i > res.data.length -4; i--) {
+    for (let i = res.data.length - 1; i > res.data.length - 4; i--) {
         $('.chapter-list').append($(`
             <div class="chapter-item">
-                <span class="chapter-item-text">${String(res.data[i].title)}</span> 
+                <span class="chapter-item-text"><a href='./book_section.html?_id=${res.data[i].bookId}&chapter=${res.data[i].chapter}'>${String(res.data[i].title)}</a></span> 
             </div>
-        
         `))
-        
     }
 }
 //书籍首页目录 倒序，顺序
@@ -180,10 +176,17 @@ function actionSort(res) {
     })
 }
 
-
+//点击章节标题跳转到相对应的章节
+// function chapterSkip(res){
+//     $('.chapter-item').click(function(){
+//         console.log(res.data)
+//         return
+//         window.location = `./book_section.html?chapter=${res.data[0].chapter}`
+//     })
+// }
 
 // 点击查看全部，所有章节出现
-var chapter = null
+var chapter = () => {}
 function getChapter(totalSection) {
     return function getChapters(res) {
         $('.showmore-bar').click(function () {
@@ -221,7 +224,7 @@ function getChapter(totalSection) {
 }
 
 // 去掉false
-function Goworng(res){
+function Goworng(res) {
     res.data = res.data.filter(item => "false" !== item.title)
 }
 //点击关闭按钮
@@ -243,7 +246,7 @@ function reverseFilling(res) {
     for (let i = res.data.length - 1; i > 0; i--) {
         $('.chapter-lists').append($(`
                         <div class="chapter-lists-text">
-                            <div class="list">${String(res.data[i].title)}</div> 
+                            <div class="list"><a href='./book_section.html?_id=${res.data[i].bookId}&chapter=${res.data[i].chapter}'>${String(res.data[i].title)}</a></div> 
                         </div>
                     
                     `))
@@ -256,7 +259,7 @@ function ascendingFill(res) {
     for (let i = 0; i < res.data.length; i++) {
         $('.chapter-lists').append($(`
                 <div class="chapter-lists-text">
-                    <div class="list">${String(res.data[i].title)}</div> 
+                    <div class="list"><a href='./book_section.html?_id=${res.data[i].bookId}&chapter=${res.data[i].chapter}'>${String(res.data[i].title)}</a></div> 
                 </div>
             
             `))
@@ -289,9 +292,9 @@ ajax('/api/rand', { size: '5' }, 'GET')
         recommend(res)
 
     });
-function recommend(res,i) {
+function recommend(res, i) {
     for (let i = 0; i < res.data.length; i++) {
-        console.log(111 )
+        console.log(111)
         $('.container-img a')[i].href = `./book_details.html?id=${res.data[i]._id}`
         $('.cover-img')[i].src = `${res.data[i].pic}`
         $('.content-title')[i].innerHTML = `${res.data[i].title}`

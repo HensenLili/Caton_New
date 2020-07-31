@@ -1,6 +1,10 @@
 //获取章节内容
-var id = window.location.href.split("=")[1]
-var data = { bookId: id, chapter: '1'};
+var f = window.location.href.split("?")[1]
+console.log( window.location.href)
+let id = f.split("&")[0].split('=')[1]
+let chapter = f.split("&")[1].split('=')[1]
+var data = { bookId: id, chapter};
+console.log(data)
 function get(data) {
     ajax('/api/section', data, 'get')
         .then(res => {
@@ -16,9 +20,6 @@ function content(res) {
             <img  src ="${res.data[0].content[i]}"/>
 `))
     } 
-
-
-    // res.data[0].content//判断
 }
 //点击返回，返回书籍
 $('.back').click(function () {
@@ -30,12 +31,6 @@ $('.back').click(function () {
 $('.next').click(function () {
     $('.chapter-content')[0].innerHTML = ""
     data.chapter++
-    // if(data.title=='false'){
-    //     $('.chapter-content')[0].innerHTML = ""
-    //     $('.chapter-content').append($(`
-    //     <p>此章节需要会员才能观看哟</p>
-    //     `))
-    // }
     get(data)
 })
 //点击上一章，获取上面的章节
