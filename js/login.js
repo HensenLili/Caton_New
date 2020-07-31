@@ -1,17 +1,16 @@
 const config = "http://47.106.96.222:2333";
 var pup = document.querySelector(".pup");
-function dianjj(){
+function dianjj() {
   try {
-    document.querySelector('.pup>span').onclick=function(){
-      window.location.href="./public/login.html";
-    }
-  }catch(err){
+    document.querySelector(".pup>span").onclick = function () {
+      window.location.href = "./public/login.html";
 
-  }
+      document.querySelector(".back").onclick = function () {
+        window.history.go(-1);
+      };
+    };
+  } catch (err) {}
 }
-document.querySelector(".back").onclick = function () {
-  window.history.go(-1);
-};
 
 function ajax(Url, data, type) {
   let ran = new Promise(function (resolve, reject) {
@@ -43,7 +42,7 @@ function ajax(Url, data, type) {
 ajax("/api/user", {}, "get").then((res) => {
   if (!res.success) {
     pup.style.display = "block";
-    dianjj()
+    dianjj();
   }
 });
 
