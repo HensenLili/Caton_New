@@ -1,7 +1,13 @@
 const config = "http://47.106.96.222:2333";
 var pup = document.querySelector(".pup");
-document.querySelector('.pup>span').onclick=function(){
-  window.location.href="../public/login.html";
+function dianjj(){
+  try {
+    document.querySelector('.pup>span').onclick=function(){
+      window.location.href="./public/login.html";
+    }
+  }catch(err){
+
+  }
 }
 document.querySelector(".back").onclick = function () {
   window.history.go(-1);
@@ -37,6 +43,7 @@ function ajax(Url, data, type) {
 ajax("/api/user", {}, "get").then((res) => {
   if (!res.success) {
     pup.style.display = "block";
+    dianjj()
   }
 });
 
