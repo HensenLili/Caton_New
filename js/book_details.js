@@ -119,9 +119,9 @@ function dianzan(res) {
             this.nextElementSibling.innerText = Number(this.nextElementSibling.innerText) - 1;
             $(this)[0].style.backgroundImage = ` url(https://s.bdstatic.com/common/openjs/likeComponent/img/like-frame-heavy.png)`
             xen = true;
-          if(this.isZan==ture){
+        //   if(this.isZan==ture){
 
-          }
+        //   }
         }
     })
 }
@@ -287,9 +287,10 @@ ajax('/api/rand', { size: '5' }, 'GET')
         recommend(res)
         // console.log(res.data[0]._id);
     });
-function recommend(res) {
+function recommend(res,i) {
     for (let i = 0; i < res.data.length; i++) {
-        // window.location = `../book_section.html?id=${id}`;
+        console.log(111 )
+        $('.container-img a')[i].href = `./book_details.html?id=${res.data[i]._id}`
         $('.cover-img')[i].src = `${res.data[i].pic}`
         $('.content-title')[i].innerHTML = `${res.data[i].title}`
         $('.content-tag-list')[i].innerHTML = `${res.data[i].tag}`
