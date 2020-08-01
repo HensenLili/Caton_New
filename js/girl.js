@@ -116,13 +116,14 @@ searchfor.addEventListener('click',()=>{
 
 var nanshengbang = document.querySelector(".nanshengbang")
 var nansheng = document.querySelector(".nansheng")
-function aaaaaaa(aadx){
-	aadx.addEventListener('click',()=>{
-		window.location.href = "classify.html";
-	})
+
+nanshengbang.addEventListener('click',()=>{
+	window.location.href = "ranking.html?女生榜";
+})
+
+nansheng.onclick = function() {
+	window.location.href = "classify.html";
 }
-aaaaaaa(nanshengbang)
-aaaaaaa(nansheng)
 
 var back = document.querySelector(".back")
 

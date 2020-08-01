@@ -53,9 +53,9 @@ var shujia = document.querySelector('.shujia')
 //接点
 function hank(data, num, callback) {
 	ajax("/api/book", data, "GET").then((res) => {
-		// console.log(res,data)
+		// console.log(res.data)
 
-		for (var i = 0; i < res.data.length; i++) {
+		for (var i = 0; i < res.data.length ; i++) {
 			// console.log(res.data[i].title)
 			// console.log(res.data[i]._id)
 			// console.log(res.data[i].pic)
@@ -223,4 +223,14 @@ back.addEventListener('click',()=>{
 var user = document.querySelector(".user")
 user.onclick = function() {
 	window.location.href = "./public/login.html";
+}
+
+
+var paihang = document.querySelector(".paihang")
+var fenlei = document.querySelector('.fenlei')
+fenlei.onclick = function() {
+	window.location.href = "classify.html";
+}
+paihang.onclick = function() {
+	window.location.href = "ranking.html";
 }
