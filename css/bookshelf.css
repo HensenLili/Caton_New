@@ -61,6 +61,10 @@
   font-size: 0.319rem;
   font-weight: 900;
   color: black;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+
 }
 .book > p {
   width: 100%;
