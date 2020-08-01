@@ -118,7 +118,7 @@ var nanshengbang = document.querySelector(".nanshengbang")
 var nansheng = document.querySelector(".nansheng")
 
 nanshengbang.addEventListener('click',()=>{
-	window.location.href = "ranking.html?女生榜";
+	window.location.href = "ranking.html?girl";
 })
 
 nansheng.onclick = function() {

@@ -13,9 +13,26 @@ var dataArr = [
   { page: 1, pageSize: 10, sort: "ture", sex: "1" },
   { page: 1, pageSize: 10, sort: "ture", tag: "精品" },
 ];
+
 var topp = document.querySelector(".top");
 var contt = document.querySelector(".cont");
 var adian = document.querySelectorAll(".nav > a ");
+
+var datag=window.location.search
+if(!datag){
+  rank(dataArr[0]);
+}else if(datag==('?boy')){
+  adian[lastx].classList.remove("anf");
+    adian[1].classList.add("anf");
+    lastx = 1;
+  rank(dataArr[1])
+}else if(datag==('?girl')){
+  adian[lastx].classList.remove("anf");
+    adian[2].classList.add("anf");
+    lastx = 2;
+  rank(dataArr[2])
+}
+
 
 //获取排行数据
 function rank(data) {
@@ -97,7 +114,7 @@ for (const i in adian) {
   };
 }
 
-rank(dataArr[0]);
+
 
 window.onscroll = function (e) {
   if(scrollTop()+clientHeight()==scrollHeight()){
