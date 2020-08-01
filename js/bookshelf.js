@@ -38,7 +38,7 @@ book.innerHTML=`<p>你的书架空空如也！</p>
 
 function jiaz(res) {
   let a = document.createElement("a");
-  a.href = `./book_section.html?id=${res._id}`;
+  a.href = `./book_details.html?id=${res._id}`;
   a.innerHTML = `
     <div class="card">
             <img src="${res.pic}" alt="" />
