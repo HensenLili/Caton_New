@@ -7,6 +7,14 @@ function dianj(){
   }
 }
 
+document.querySelector('.searchfor').onclick=function(){
+  window.location.href="./search.html";
+}
+document.querySelector('.user').onclick=function(){
+  window.location.href="./public/Personal.html";
+}
+
+
 ajax("/api/user", {}, "get").then((res) => {
   if(!res.success){return}
   book.innerHTML=''

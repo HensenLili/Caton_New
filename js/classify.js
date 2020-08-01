@@ -11,6 +11,13 @@ var loading=`<div class="loading">
               </div>`
 ajj(cladata);
 
+document.querySelector('.searchfor').onclick=function(){
+  window.location.href="./search.html";
+}
+document.querySelector('.user').onclick=function(){
+  window.location.href="./public/Personal.html";
+}
+
 //获取分类标签
 ajax("/api/tag", {}, "get").then((res) => {
   if(!res.success){return}
