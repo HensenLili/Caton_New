@@ -133,5 +133,5 @@ back.addEventListener('click',()=>{
 	
 var user = document.querySelector(".user")
 user.onclick = function() {
-	window.location.href = "./public/login.html";
+	window.location.href = "./public/Personal.html";
 }	

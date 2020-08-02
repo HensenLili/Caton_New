@@ -44,6 +44,8 @@
     .own-personnall {
         height: 60%;
         /* background-color: gray .2; */
+        position: relative;
+        top: 6%;
 
     }
 
@@ -62,8 +64,7 @@
     }
 
     .imgbox {
-        height: 0%;
-        width: 50%;
+        width: 37%;
         /* background-color: rgb(255, 255, 255,.3); */
         margin: 0 auto 0 auto;
         background-size: 180px;
@@ -71,6 +72,13 @@
 
     }
 
+    .msgbox>span {
+        font-size: 25px;
+        font-weight: bold;
+        top: 20px;
+        position: relative;
+        left: 25%;
+    }
 
     .user_icon {
         height: 100px;
@@ -78,12 +86,12 @@
         border-radius: 50%;
         padding: 3px;
         background-color: #fff;
-        margin: 4px 50px;
-        margin-top: 4px;
+        margin: 0 auto;
+        margin-top: 40px;
     }
 
     .msgbox {
-        height: 50%;
+        height: 90%;
         width: 55%;
         background-color: rgba(255, 255, 255, .9);
         border: 0.2px solid rgb(73, 0, 70);
@@ -94,7 +102,7 @@
     }
 
     .msg_ {
-        margin-top: 70px;
+        margin-top: 40px;
         font-size: larger;
         font-weight: bolder;
         text-align: center;
@@ -133,16 +141,18 @@
     }
 
     .update_box {
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, .9);
         width: 80%;
-        margin: 0 auto;
-        padding: 9%;
+        margin: -21px auto;
+        padding: 7%;
         display: none;
     }
-    .but_box{
+
+    .but_box {
         display: inline-block;
     }
-    .btn{
+
+    .btn {
         width: 147px;
         color: #fff;
         background-color: #070e1e;
@@ -150,29 +160,36 @@
         font-size: 20px;
         font-weight: bold;
     }
+
+    .title_m {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 0px auto;
+        display: table;
+    }
+
+    .avtter {
+        position: absolute;
+        top: 30%;
+        left: 40%;
+    }
+    .update_sub{
+        position: relative;
+        left: 25%;
+    }
 </style>
 
 <body>
     <div class="container-fluid">
+        <div class="avtter"></div>
         <div class="row">
             <header class="own-title">
                 <div class="return"><img src="./assets/imgs/return.svg" type="" width="30px" height="30px"></div>
-                <span>刚哥漫画</span>
+                <span class="refresh">刚哥漫画</span>
                 <div class="more"><img src="./assets/imgs/geng_duo.svg" type="" width="30px" height="30px"></div>
             </header>
             <section class="own-personnall">
                 <div class="msgbox">
-                    <!-- <ul>
-                        <li class="per_l">
-                            <span><embed src="./assets/imgs/username.svg" width="20px" height="20px"></span>
-                            <p>用户名：</p>
-                        </li>
-                        <li class="per_l">
-                            <span><embed src="./assets/imgs/pwd.svg" width="20px" height="20px"></span>
-                            <p>昵称：</p>
-                        </li>
-                    </ul> -->
-
                 </div>
                 <div class="update_box"></div>
             </section>
@@ -183,10 +200,10 @@
             <div class="logo_img">
                 <img src="./assets/imgs/mlogo.png" alt="" width="100%">
                 <div class="but_box">
-                <button class="btn btn-default go_book">我的书架</button>
-                <button class="btn btn-default user_msg">个人信息</button>
-                <button class="btn btn-default update_msg">修改信息</button>
-                <button class="btn btn-default go_home">退出</button>
+                    <button class="btn btn-default go_book">我的书架</button>
+                    <button class="btn btn-default user_msg">个人信息</button>
+                    <button class="btn btn-default update_msg">修改信息</button>
+                    <button class="btn btn-default go_home">退出</button>
                 </div>
             </div>
         </div>
@@ -214,26 +231,30 @@
             user_msg: document.querySelector(".user_msg"),
             go_home: document.querySelector(".go_home"),
             update_msg: document.querySelector(".update_msg"),
-            update_box: document.querySelector(".update_box")
+            update_box: document.querySelector(".update_box"),
+            go_book: document.querySelector(".go_book"),
+            avtter: document.querySelector(".avtter"),
+            icon_us:document.querySelector(".icon_us"),
+            refresh:document.querySelector(".refresh")
         },
-        moveIcon() {
-            str = 4
-            timer1 = setInterval(() => {
-                if (str < -50) {
-                    clearInterval(timer1)
-                } else {
-                    Card.list.user_icon.style.marginTop = str - 2 + "px"
-                    str = str - 2
-                }
+        // moveIcon() {
+        //     str = 4
+        //     timer1 = setInterval(() => {
+        //         if (str < -50) {
+        //             clearInterval(timer1)
+        //         } else {
+        //             Card.list.user_icon.style.marginTop = str - 2 + "px"
+        //             str = str - 2
+        //         }
 
-                console.log("run")
+        //         console.log("run")
 
-            }, 10);
-        },
+        //     }, 10);
+        // },
         moveBox() {
             console.log(Card.list.side_box.offsetLeft)
             if (Card.list.side_box.offsetLeft == 0) {
-                Card.list.side_box.style.left = -147 +"px"
+                Card.list.side_box.style.left = -147 + "px"
 
             } else if (Card.list.side_box.offsetLeft == -147) {
                 Card.list.side_box.style.left = 0 + "px"
@@ -248,20 +269,28 @@
         },
         returnLogin() {
             Card.list.return.onclick = function () {
-                console.log("111")
-                window.location.href = "http://127.0.0.1:5500/public/*.html"
+                // console.log("111")
+                window.history.go(-1)
             }
 
         },
         returnHome() {
             Card.list.go_home.onclick = function () {
-                console.log("222")
+                // console.log("222")
                 window.location.href = "http://127.0.0.1:5500/public/login.html"
             }
 
         },
-        clear(){
 
+        bookshelf_go() {
+            Card.list.go_book.onclick = function () {
+                window.location.href = "http://127.0.0.1:5500/bookshelf.html"
+            }
+        },
+        refresh_go(){
+            Card.list.refresh.onclick = function () {
+                window.location.href = "http://127.0.0.1:5500/public/Personal.html"
+            }
         },
 
         init() {
@@ -278,13 +307,18 @@
                 },
                 success: function (res) {
                     console.log(res)
+                    img_ = `<img src="${"http://47.106.96.222:2333/public/upload/" + res.data.user.avatar}" alt="" class="user_icon icon_us">`
+                    Card.list.avtter.innerHTML = img_
                     Card.list.user_msg.onclick = function () {
                         console.log("11")
-                        Card.moveIcon()
+                        // Card.moveIcon()
                         // 资料卡
                         Card.list.msgbox.style.display = "block"
+                        Card.list.update_box.style.display = "none"
+                        Card.list.avtter.style.display = "none"
                         console.log(res)
                         mgs = `
+                            <span>个人信息</span>
                             <div class="imgbox">
                                 <img src="${"http://47.106.96.222:2333/public/upload/" + res.data.user.avatar}" alt="" class="user_icon">
                             </div>
@@ -303,14 +337,18 @@
                     Card.returnLogin()
                     Card.sides_Box()
                     Card.returnHome()
+                    Card.bookshelf_go()
+                    Card.refresh_go()
 
                     //增加更改节点
                     Card.list.update_msg.onclick = function () {
                         Card.list.msgbox.style.display = "none"
                         Card.list.update_box.style.display = "block"
+                        Card.list.avtter.style.display = "none"
                         console.log("2222")
                         art = `   
                         <form>
+                        <span class="title_m">修改信息</span>
                         <div class="form-group">
                             <label for="exampleInputEmail1">用户名</label>
                             <input type="text" class="form-control" placeholder="${res.data.user.username}" disabled="disabled">
