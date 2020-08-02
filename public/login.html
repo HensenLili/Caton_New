@@ -15,22 +15,39 @@
         margin: 0;
         padding: 0;
     }
+    @media (max-width: 768px) {
+        .container {
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+    }
 
     @media (min-width: 768px) {
         .container {
             width: 750px;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
     }
 
     @media (min-width: 992px) {
         .container {
             width: 970px;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
     }
 
     @media (min-width: 1200px) {
         .container {
             width: 1920px;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
     }
 </style>
@@ -104,8 +121,6 @@
             </footer>
         </div>
     </section>
-
-
 </body>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="./assets/js/auth.js"></script>
@@ -208,7 +223,7 @@
             success: function (msg) {
                 if (msg.success) {
                     console.log(msg)
-                    // window.location.href = "http://127.0.0.1:5500/public/Personal.html"
+                    window.location.href = "http://127.0.0.1:5500/bookshelf.html"
                 }
 
             }

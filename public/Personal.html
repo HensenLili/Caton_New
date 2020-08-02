@@ -17,10 +17,18 @@
     html,
     body {
         height: 100%;
+        overflow: hidden;
     }
 
     .container-fluid {
         height: 100%;
+        position: relative;
+        /* left: -145px */
+        padding: 0;
+        margin: 0;
+        background-color: #2b2e4d;
+        left: 0;
+
     }
 
     .own-title {
@@ -44,6 +52,8 @@
         background-size: 100%;
         background-position-y: -20px;
         height: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     .carousel {
@@ -55,12 +65,12 @@
         height: 0%;
         width: 50%;
         /* background-color: rgb(255, 255, 255,.3); */
-        margin: 125px auto 0 auto;
+        margin: 0 auto 0 auto;
         background-size: 180px;
 
 
     }
-    
+
 
     .user_icon {
         height: 100px;
@@ -104,20 +114,53 @@
         font-size: 1.3em;
         font-weight: bold;
     }
+
+    .more_box {
+        width: 37.1%;
+        height: 100%;
+        background-color: #070e1e;
+        top: 0%;
+        left: 100%;
+        position: absolute;
+    }
+
+    .logo_img {
+        margin: 0 auto;
+    }
+
+    .user_msg {
+        margin: 0 auto;
+    }
+
+    .update_box {
+        background-color: #fff;
+        width: 80%;
+        margin: 0 auto;
+        padding: 9%;
+        display: none;
+    }
+    .but_box{
+        display: inline-block;
+    }
+    .btn{
+        width: 147px;
+        color: #fff;
+        background-color: #070e1e;
+        border-color: #070e1e;
+        font-size: 20px;
+        font-weight: bold;
+    }
 </style>
 
 <body>
     <div class="container-fluid">
         <div class="row">
             <header class="own-title">
-                <div id="return"><embed src="./assets/imgs/return.svg" type="" width="30px" height="30px" ></div>
+                <div class="return"><img src="./assets/imgs/return.svg" type="" width="30px" height="30px"></div>
                 <span>刚哥漫画</span>
-                <embed src="./assets/imgs/geng_duo.svg" type="" width="30px" height="30px">
+                <div class="more"><img src="./assets/imgs/geng_duo.svg" type="" width="30px" height="30px"></div>
             </header>
             <section class="own-personnall">
-                <div class="imgbox">
-                    <img src="./assets/imgs/2.jpg" alt="" class="user_icon">
-                </div>
                 <div class="msgbox">
                     <!-- <ul>
                         <li class="per_l">
@@ -131,9 +174,21 @@
                     </ul> -->
 
                 </div>
+                <div class="update_box"></div>
             </section>
             <footer>
             </footer>
+        </div>
+        <div class="more_box">
+            <div class="logo_img">
+                <img src="./assets/imgs/mlogo.png" alt="" width="100%">
+                <div class="but_box">
+                <button class="btn btn-default go_book">我的书架</button>
+                <button class="btn btn-default user_msg">个人信息</button>
+                <button class="btn btn-default update_msg">修改信息</button>
+                <button class="btn btn-default go_home">退出</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -151,14 +206,21 @@
             msgbox: document.querySelector(".msgbox"),
             per_msg: document.querySelector(".per_msg"),
             imgbox: document.querySelector(".imgbox"),
-            return:document.querySelector("#return")
-
+            return: document.querySelector(".return"),
+            more: document.querySelector(".more"),
+            more_box: document.querySelector(".more_box"),
+            side_box: document.querySelector(".container-fluid"),
+            go_book: document.querySelector(".o_book"),
+            user_msg: document.querySelector(".user_msg"),
+            go_home: document.querySelector(".go_home"),
+            update_msg: document.querySelector(".update_msg"),
+            update_box: document.querySelector(".update_box")
         },
         moveIcon() {
             str = 4
-            timer = setInterval(() => {
+            timer1 = setInterval(() => {
                 if (str < -50) {
-                    clearInterval(timer)
+                    clearInterval(timer1)
                 } else {
                     Card.list.user_icon.style.marginTop = str - 2 + "px"
                     str = str - 2
@@ -168,45 +230,200 @@
 
             }, 10);
         },
-        msgBox() {
-            Card.list.msgbox.style.display = "block"
-            mgs = `
-                <div class="msg_">
-                    <p>账号：koujing666</p>
-                    <p>昵称：寇靖666</p>
-                    <p>个人简介：我 寇靖 无敌</p>
-                </div>
-                `
-            Card.list.msgbox.innerHTML = mgs
+        moveBox() {
+            console.log(Card.list.side_box.offsetLeft)
+            if (Card.list.side_box.offsetLeft == 0) {
+                Card.list.side_box.style.left = -147 +"px"
+
+            } else if (Card.list.side_box.offsetLeft == -147) {
+                Card.list.side_box.style.left = 0 + "px"
+            }
 
 
         },
-        returnLogin(){
-            Card.list.return.onclick = function(){
+        sides_Box() {
+            Card.list.more.onclick = function () {
+                Card.moveBox()
+            }
+        },
+        returnLogin() {
+            Card.list.return.onclick = function () {
+                console.log("111")
+                window.location.href = "http://127.0.0.1:5500/public/*.html"
+            }
+
+        },
+        returnHome() {
+            Card.list.go_home.onclick = function () {
+                console.log("222")
                 window.location.href = "http://127.0.0.1:5500/public/login.html"
             }
-            
+
         },
+        clear(){
+
+        },
+
         init() {
             // 确定登陆状态
             let Url_ = "http://47.106.96.222:2333"
-            $.ajax(Url_ + "/api/user",{},"get").then(res =>{
-                console.log(res)
+
+            $.ajax({
+                url: Url_ + "/api/user",
+                dataType: "JSON",
+                type: 'get',
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: true // 携带跨域cookie
+                },
+                success: function (res) {
+                    console.log(res)
+                    Card.list.user_msg.onclick = function () {
+                        console.log("11")
+                        Card.moveIcon()
+                        // 资料卡
+                        Card.list.msgbox.style.display = "block"
+                        console.log(res)
+                        mgs = `
+                            <div class="imgbox">
+                                <img src="${"http://47.106.96.222:2333/public/upload/" + res.data.user.avatar}" alt="" class="user_icon">
+                            </div>
+                            <div class="msg_">
+                                <p>账号：${res.data.user.username}</p>
+                                <p>昵称：${res.data.user.nickname}</p>
+                                <p>个人简介：我 寇靖 无敌</p>
+                            </div>
+                           
+
+                        `
+                        Card.list.msgbox.innerHTML = mgs;
+                        Card.moveBox()
+                    }
+
+                    Card.returnLogin()
+                    Card.sides_Box()
+                    Card.returnHome()
+
+                    //增加更改节点
+                    Card.list.update_msg.onclick = function () {
+                        Card.list.msgbox.style.display = "none"
+                        Card.list.update_box.style.display = "block"
+                        console.log("2222")
+                        art = `   
+                        <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">用户名</label>
+                            <input type="text" class="form-control" placeholder="${res.data.user.username}" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">昵称</label>
+                            <input type="text" class="form-control update_nickname"  placeholder="${res.data.user.nickname}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">密码</label>
+                            <input type="password" class="form-control update_password" placeholder="${res.data.user.password}">
+                        </div>
+                        <div class="form-group">
+                            <input type="file" id="update_icon">
+                            <img width="150" height="150" src="./assets/imgs/1.jpg" id="pictrue">
+                            </div>
+                        <div class="checkbox">
+                            <label>
+                            <input type="checkbox" required> 确认更改
+                            </label>
+                        </div>
+                        <botton  class="btn btn-default update_sub">提交</botton>
+                        </form>
+                        `
+                        Card.list.update_box.innerHTML = art;
+                        Card.moveBox()
+
+                        //获取信息
+                        update_icon = $("#update_icon")
+                        let name = null
+                        update_icon.on("change", function (e) {
+                            // 获取图片
+                            var type = this.files[0].type;
+
+                            if (type == "image/png" || type == "image/jpeg") {
+                                var form = new FormData();
+                                let file = document.querySelector("#update_icon").files[0]
+                                let type = file.name.split(".")[1]
+                                name = `${new Date().getTime()}.${type}`
+                                //创建一个假From对象
+
+                                form.append("file", file, name);
+                                // console.log(form)
+                                // console.log(filename) 
+                                // console.log(this.files[0])
+                                $.ajax({
+                                    url: Url_ + "/api/upload",
+                                    data: form,
+                                    // dataType:form,
+                                    type: "POST",
+                                    crossDomain: true,
+                                    contentType: false,//因为提交的是表单，content-type
+                                    processData: false,
+                                    xhrFields: {
+                                        withCredentials: true // 携带跨域cookie
+                                    },
+                                    success: function (msg) {
+                                        console.log(msg)
+                                    }
+                                })
+                            } else {
+                                alert("图片格式错误")
+                            }
+                        })
+                        //发送更新数据
+                        $(".update_sub").on("click", () => {
+                            update_nickname = document.getElementsByClassName("update_nickname")[0].value,
+                                update_password = document.getElementsByClassName("update_password")[0].value,
+                                update_sub = document.querySelector(".update_sub")
+                            console.log(res.data.user.username, update_nickname, update_password, name)
+
+                            $.ajax({
+                                url: Url_ + "/api/user",
+                                type: "PUT",
+                                data: {
+                                    username: res.data.user.username,
+                                    nickname: update_nickname,
+                                    password: update_password,
+                                    avatar: name
+                                },
+                                xhrFields: {
+                                    withCredentials: true // 携带跨域cookie
+                                },
+                                dataType: "JSON",
+                                success: function (msg) {
+                                    console.log(msg)
+                                    alert(msg.data.msg)
+                                    if (msg.success) {
+                                        console.log(111)
+                                    }
+                                },
+                            })
+                        })
+                    }
+
+
+
+
+
+
+
+                },
+                error: function (err) {
+                    console.log(err)
+                }
             })
-            //获取数据
 
 
 
-            Card.list.user_icon.onclick = function () {
-                console.log("11")
-                Card.moveIcon(),
-                Card.msgBox()
 
 
 
-            }
 
-            Card.returnLogin()
 
         }
 
