@@ -6,10 +6,15 @@
     <title>书架</title>
     <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./css/adaptation.css" />
+    <link rel="stylesheet" href="./css/loading.css">
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/bookshelf.css" />
   </head>
   <body>
+    <div class="pup">
+      <p>未登录，请前往登录</p>
+      <span>登录</span>
+  </div>
     <div class="header">
       <span class="back">返回</span>
       <span>书架</span>
@@ -22,8 +27,13 @@
       <a href="./boy.html"><span>男生</span></a>
       <a href="./girl.html"><span>女生</span></a>
     </div>
-    <div class="del"></div>
     <div class="book">
+      <div class="loading">
+	      <div class="kuai kuai_one"></div>
+	      <div class="kuai kuai_two"></div>
+	      <div class="kuai kuai_three"></div>
+	      <div class="kuai kuai_four"></div>
+	    </div>
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script src="./js/login.js"></script>

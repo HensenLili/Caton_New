@@ -34,8 +34,8 @@ body {
       -180deg,
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 0.8) 100%
-    ),
-    url("http://t7.baidu.com/it/u=1941620025,3407230191&fm=83&app=66&f=JPEG?w=629&h=369&s=25B3719702E47ABE940105C903007033");
+    );
+    /* url("http://t7.baidu.com/it/u=1941620025,3407230191&fm=83&app=66&f=JPEG?w=629&h=369&s=25B3719702E47ABE940105C903007033"); */
   background-size: cover;
 }
 .detailnew-title,
@@ -95,18 +95,18 @@ body {
   align-items: center;
   line-height: 0.4rem;
 }
-.add {
-  border: 1px solid gray;
-  border-radius: 20px;
-  width: 100px;
-  color: black;
-}
-.red {
+.add,.red {
   border: 1px solid red;
   background-color: red;
   border-radius: 20px;
-  width: 180px;
+  width: 120px;
   color: white;
+}
+.back{
+  border: 1px solid #333;
+  color: black;
+  width: 80px;
+  border-radius: 20px;
 }
 /*----------------------详情，互动-----------------------*/
 .detailnew-tab {
@@ -135,6 +135,12 @@ body {
 }
 .interaction-page{
     display: none;
+    /* margin-bottom: 20px; */
+}
+.timer{
+  font-size: 10px;
+  color: #999;
+  padding-left: 5px;
 }
 .record{
     position: relative;
@@ -419,6 +425,7 @@ p {
 .chapter-lists-text{
     font-family: PingFangSC-Regular;
     font-size: .16rem;
+    width: 100%;
     color: #333;
     letter-spacing: 0;
     text-align: justify;
@@ -426,6 +433,7 @@ p {
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: 0 0 10px 0 ;
+    height: 50px;
 }
 .list{
   display: inline-block;
@@ -478,6 +486,7 @@ p {
 }
 a{
     text-decoration: none;
+    color: #333;
 }
 .content-title{
     color: #333;
@@ -590,4 +599,18 @@ a{
     height: .13rem;
     line-height: .13rem;
     color: #999;
+}
+.clo{
+  background-image: url(../img/hand.png);
+}
+
+.img-buttom{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.img-buttom img{
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }

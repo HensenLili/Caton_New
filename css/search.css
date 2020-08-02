@@ -1,0 +1,215 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-decoration: none;
+}
+
+html {
+	font-size: 26.6666666vw;
+}
+
+/* ------------ */
+
+.header {
+	position: relative;
+	height: 44px;
+	width: 100%;
+	/* background-color: pink; */
+}
+
+.headbox {
+	position: absolute;
+	top: 4px;
+	left: 4.5%;
+	height: 77%;
+	width: 91%;
+	border: 1px solid darkgray;
+	border-radius: 20px;
+}
+
+.search-icon {
+	position: absolute;
+	z-index: 11;
+	top: .08rem;
+	left: .2rem;
+	width: .18rem;
+	height: .18rem;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAMAAAC7m5rvAAAAVFBMVEUAAADNzc3Nzc3MzMzMzMzMzMzMzMzQ0NDb29vNzc3Nzc3Nzc3Nzc3MzMzNzc3Nzc3MzMzMzMzNzc3Ozs7Pz8/Q0NDMzMzOzs7Ozs7MzMzNzc3MzMzR1JklAAAAG3RSTlMA9S383MGKDQfgV1BbzratpaGPY0AmHhV843tWSk6AAAABPElEQVRIx+2W2RKDIAxFwarQQuu+//9/1mTqTDUCksdO72PgMNlMFH9dUjKXWSplmpVzcpmp0+VLaX2F7KuFqOoDkM7lciKZax81ZJ9rRdN2SnVtU3yeyQZPVHe88jRfb2vzROM9cVISz+3RbvE16eAGPH0peqJe+N6pnxrjysWpcoxPO04IFTztJXgonAI/Ja1fBd4rN6Yg8opkEZywwiMLN47ZrKFewiuoX32wQfcaP2agr6mPUvsxLYmX42opREDFemncWcrV0oSwZr1U7izQIW0Ia6FTSEa6ENaRnEC0KoQpyBsTYzrJTAmzALxyz8zm4rUy88Nhfqa8ocAcQbyBxxyvnGF+s4zVAdwjflHdkItei3bjIpfwY+MiVz7lwj8YQQ7JcfudGZHZcUbECrlJMDgWJsw0GfHjegPU1jJW3DkefAAAAABJRU5ErkJggg==) no-repeat 50%;
+	background-size: cover;
+}
+
+.search-input-wrap {
+	display: flex;
+	border-radius: 1rem;
+	padding: .08rem .85rem .08rem .43rem;
+	background: #fff;
+}
+
+.search-input {
+	flex: 1;
+	height: .18rem;
+	line-height: .18rem;
+	background: #fff;
+	border: 0px;
+	border-radius: 1rem;
+	outline: 0;
+	color: #000;
+	font-size: .14rem;
+	text-align: left;
+	overflow: hidden;
+	z-index: 10;
+}
+
+.close-icon {
+	height: .15rem;
+	right: .71rem;
+	top: .1rem;
+	padding-right: .1rem;
+	border-right: 1px solid #e8e8e8;
+	position: absolute;
+	z-index: 11;
+}
+
+.cancel {
+	position: absolute;
+	right: .31rem;
+	top: 0rem;
+	height: .34rem;
+	line-height: .34rem;
+	background: 0 0;
+	border: 0;
+	padding-left: .18rem;
+	font-size: .14rem;
+	color: #333;
+	z-index: 11;
+	color: rgba(51, 51, 51, .2);
+}
+
+.box {
+	width: 91%;
+	/* height: 500px; */
+	margin: 0 auto;
+}
+
+.main {
+	width: 100%;
+
+	position: relative;
+	height: .16rem;
+	line-height: .16rem;
+	overflow: hidden;
+	padding-top: .11rem;
+	padding-bottom: .18rem;
+}
+
+.main p {
+	font-size: .16rem;
+	color: #999999;
+}
+
+.refresh {
+	display: block;
+	height: .16rem;
+	line-height: .16rem;
+	position: absolute;
+	top: .15rem;
+	right: 0;
+	color: #333;
+	font-size: .13rem;
+	padding-left: .18rem;
+}
+
+.refresh span {
+	color: #999999;
+}
+
+.reloadimg {
+	position: absolute;
+	top: .01rem;
+	left: 0;
+	width: .13rem;
+	height: .13rem;
+}
+
+.search-list {
+	position: relative;
+	height: 1rem;
+	line-height: 1rem;
+	overflow: hidden;
+	padding-top: .11rem;
+	padding-bottom: .18rem;
+	border-left: 1px solid #f4f4f4;
+	border-bottom: 1px solid #f4f4f4;
+}
+
+.hot-item {
+	float: left;
+	width: 33.33%;
+	height: .36rem;
+	line-height: .36rem;
+	text-align: center;
+	display: block;
+	box-sizing: border-box;
+	color: #333;
+	font-size: .14rem;
+	border-top: 1px solid #f4f4f4;
+	border-right: 1px solid #f4f4f4;
+	white-space: nowrap;
+	overflow: hidden;
+	padding: 0 .05rem;
+	text-overflow: ellipsis;
+}
+/* -------------------------- */
+.booklist{
+	position: absolute;
+	top: 7%;
+	left: 4.5%;
+	width:91%;
+	background-color: white;
+	display: none;
+}
+.booklist>p{
+	position: absolute;
+	font-size: 15px;
+	color: #999999;
+}
+.books{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.card.card {
+  position: relative;
+  display: flex;
+  font-size: 0.14rem;
+  padding: 0.3rem 0rem 0 0 ;
+  color: #aaa;
+}
+.card >div img {
+  width: 1.03rem;
+  margin-right: 0.1rem;
+  border-radius: 3px;
+}
+.card > div > p:nth-of-type(1) {
+  font-size: 0.21rem;
+  margin-bottom: 0.1rem;
+  color: black;
+}
+
+.card > div > p:nth-of-type(2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.card > div > p:nth-of-type(3) {
+  position: absolute;
+  top: 0.1rem;
+  right: 0.6rem;
+  font-size: 0.912rem;
+  color: #eee;
+}
+.clin {
+  margin: 0.1rem 0 0.1rem;
+}

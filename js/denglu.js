@@ -7,7 +7,6 @@ function ajax(Url,data,type){
             type: type,
             dataType: "JSON",
             data: data,
-            crossDomain: true,
             xhrFields: {
                 withCredentials: true // 携带跨域cookie
             },
@@ -22,8 +21,12 @@ function ajax(Url,data,type){
     return ran
 }
 
-ajax('/api/login',{username: "root",password: "root"},'POST')
+ajax('/api/user', {}, 'get')
+
 
 .then(res=>{
-    console.log(res);
+    if(!res.success){
+		console.log("1111")
+	}
+	// console.log(res)
 });
