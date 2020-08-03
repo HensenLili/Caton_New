@@ -11,7 +11,7 @@ document.querySelector('.searchfor').onclick=function(){
   window.location.href="./search.html";
 }
 document.querySelector('.user').onclick=function(){
-  window.location.href="./public/Personal.html";
+  window.location.href="./Personal.html";
 }
 
 

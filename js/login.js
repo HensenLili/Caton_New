@@ -2,7 +2,7 @@ const config = "http://47.106.96.222:2333";
 var pup = document.querySelector(".pup");
   try {
     document.querySelector(".pup>span").onclick = function () {
-      window.location.href = "./public/login.html";
+      window.location.href = "./login.html";
     };
     document.querySelector(".back").onclick = function () {
       window.history.go(-1);

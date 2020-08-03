@@ -50,7 +50,7 @@
     }
 
     .row {
-        background: url(./assets/imgs/pers4.jpg) no-repeat;
+        background: url(./img/pers4.jpg) no-repeat;
         background-size: 100%;
         background-position-y: -20px;
         height: 100%;
@@ -153,7 +153,7 @@
     }
 
     .btn {
-        width: 147px;
+        width: 139px;
         color: #fff;
         background-color: #070e1e;
         border-color: #070e1e;
@@ -170,8 +170,8 @@
 
     .avtter {
         position: absolute;
-        top: 30%;
-        left: 40%;
+        top: 25%;
+        left: 38%;
     }
     .update_sub{
         position: relative;
@@ -184,9 +184,9 @@
         <div class="avtter"></div>
         <div class="row">
             <header class="own-title">
-                <div class="return"><img src="./assets/imgs/return.svg" type="" width="30px" height="30px"></div>
+                <div class="return"><img src="./img/return.svg" type="" width="30px" height="30px"></div>
                 <span class="refresh">刚哥漫画</span>
-                <div class="more"><img src="./assets/imgs/geng_duo.svg" type="" width="30px" height="30px"></div>
+                <div class="more"><img src="./img/geng_duo.svg" type="" width="30px" height="30px"></div>
             </header>
             <section class="own-personnall">
                 <div class="msgbox">
@@ -198,7 +198,7 @@
         </div>
         <div class="more_box">
             <div class="logo_img">
-                <img src="./assets/imgs/mlogo.png" alt="" width="100%">
+                <img src="./img/mlogo.png" alt="" width="100%">
                 <div class="but_box">
                     <button class="btn btn-default go_book">我的书架</button>
                     <button class="btn btn-default user_msg">个人信息</button>
@@ -252,7 +252,7 @@
         //     }, 10);
         // },
         moveBox() {
-            console.log(Card.list.side_box.offsetLeft)
+            // console.log(Card.list.side_box.offsetLeft)
             if (Card.list.side_box.offsetLeft == 0) {
                 Card.list.side_box.style.left = -147 + "px"
 
@@ -277,7 +277,7 @@
         returnHome() {
             Card.list.go_home.onclick = function () {
                 // console.log("222")
-                window.location.href = "http://127.0.0.1:5500/public/login.html"
+                window.location.href = "http://127.0.0.1:5500/login.html"
             }
 
         },
@@ -289,7 +289,7 @@
         },
         refresh_go(){
             Card.list.refresh.onclick = function () {
-                window.location.href = "http://127.0.0.1:5500/public/Personal.html"
+                window.location.href = "http://127.0.0.1:5500/Personal.html"
             }
         },
 
@@ -306,17 +306,17 @@
                     withCredentials: true // 携带跨域cookie
                 },
                 success: function (res) {
-                    console.log(res)
+                    // console.log(res)
                     img_ = `<img src="${"http://47.106.96.222:2333/public/upload/" + res.data.user.avatar}" alt="" class="user_icon icon_us">`
                     Card.list.avtter.innerHTML = img_
                     Card.list.user_msg.onclick = function () {
-                        console.log("11")
+                        // console.log("11")
                         // Card.moveIcon()
                         // 资料卡
                         Card.list.msgbox.style.display = "block"
                         Card.list.update_box.style.display = "none"
                         Card.list.avtter.style.display = "none"
-                        console.log(res)
+                        // console.log(res)
                         mgs = `
                             <span>个人信息</span>
                             <div class="imgbox">
@@ -345,7 +345,7 @@
                         Card.list.msgbox.style.display = "none"
                         Card.list.update_box.style.display = "block"
                         Card.list.avtter.style.display = "none"
-                        console.log("2222")
+                        // console.log("2222")
                         art = `   
                         <form>
                         <span class="title_m">修改信息</span>
@@ -363,7 +363,7 @@
                         </div>
                         <div class="form-group">
                             <input type="file" id="update_icon">
-                            <img width="150" height="150" src="./assets/imgs/1.jpg" id="pictrue">
+                            <img width="150" height="150" src="./img/1.jpg" id="pictrue">
                             </div>
                         <div class="checkbox">
                             <label>
@@ -434,7 +434,7 @@
                                 },
                                 dataType: "JSON",
                                 success: function (msg) {
-                                    console.log(msg)
+                                    // console.log(msg)
                                     alert(msg.data.msg)
                                     if (msg.success) {
                                         console.log(111)
